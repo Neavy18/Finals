@@ -1,5 +1,6 @@
 const db = require("./db.js");
 
+//get Users query
 const getUsers = () => {
   const stringQuery = 'SELECT * FROM users'
   return db
@@ -10,6 +11,7 @@ const getUsers = () => {
   .catch((err) => err.message);
 };
 
+//get Refuges query
 const getRefuges = () => {
   const stringQuery = 'SELECT * FROM animals'
   return db
@@ -20,6 +22,7 @@ const getRefuges = () => {
   .catch((err) => err.message);
 };
 
+//get Animals query
 const getAnimals = () => {
   const stringQuery = 'SELECT * FROM animals'
   return db
@@ -30,6 +33,7 @@ const getAnimals = () => {
   .catch((err) => err.message);
 };
 
+//get Favorites query
 const getFavorites = () => {
   const stringQuery = 'SELECT * FROM favorites'
   return db
@@ -40,6 +44,7 @@ const getFavorites = () => {
   .catch((err) => err.message);
 };
 
+//register User query ---> add error message if user already exist!
 const registerUser = (firstName, lastName, email, password) => {
   const stringQuery = 'INSERT INTO users (first_name, last_name, email, password) VALUES ($1, $2, $3, $4);'
   return db 
@@ -53,10 +58,25 @@ const registerUser = (firstName, lastName, email, password) => {
   });
 }
 
+//login User query ---> add error message if no user is found!
+const loginUser = (email, password) => {
+  const stringQuery = 'SELECT * FROM users WHERE email = $1 AND password = $2;'
+  return db 
+  .query(stringQuery [email, password])
+  .then((data) => {
+    console.log("User logged in!")
+  })
+  .catch((err) => {
+    console.log("Error msg in dbHelpers loginUser was triggered --->")
+    err.message
+  });
+}
+
 module.exports = {
   getUsers,
   getRefuges,
   getAnimals,
   getFavorites,
-  registerUser
+  registerUser,
+  loginUser
 }

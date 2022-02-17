@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = 5000;
 const cors = require('cors');
-const { getUsers, getRefuges, getAnimals, getFavorites, registerUser } = require('./lib/dbHelpers');
+const { getUsers, getRefuges, getAnimals, getFavorites, registerUser, loginUser } = require('./lib/dbHelpers');
 
 app.use(express.json());
 app.use(cors());
@@ -49,7 +49,7 @@ app.get('/api/favorites', (req, res) => {
 // ------> POST REQUESTS <-------//
 
 //register user
-app.post('/register', (req, res) =>{
+app.post('/register', (req, res) => {
 
   const firstName = req.body.firstName
   const lastName = req.body.lastName
@@ -61,6 +61,18 @@ app.post('/register', (req, res) =>{
     response.json("User registered succesfully")
   })
 })
+
+//login user
+app.post('/login', (req, res) =>  {
+
+  const email = req.body.email
+  const password = req.body.password
+
+  loginUser()
+  .then((response) => {
+    response.json("User logged in succesfully")
+  })
+});
 
 
 app.listen(PORT, () => {

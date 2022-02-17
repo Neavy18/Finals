@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import axios from 'axios'
 import './Register.css';
 
-
 const Register = () => {
 
   const [firstName, setFirstName] = useState('')
@@ -17,7 +16,7 @@ const Register = () => {
       email: email, 
       password: password
     }).then((response) => {
-      console.log("this is the axios user post response -->", response);
+      console.log("this is the axios register user post response -->", response);
     });
   };
 
@@ -40,8 +39,5 @@ const Register = () => {
     </div>
   )
 }
-
-// everything related to Header goes here :  onClick js, html, icons etc
-// add logic to display icons at top when user is logged in, hide if not
 
 export default Register;

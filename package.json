@@ -1,5 +1,9 @@
 {
+  "scripts": {
+    "start": "./node_modules/.bin/nodemon -L backend_server/index.js"
+  },
   "dependencies": {
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
   }
 }

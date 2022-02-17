@@ -24,7 +24,8 @@ CREATE TABLE animals (
   refuge_id INTEGER REFERENCES refuges(id) ON DELETE CASCADE,
   specie VARCHAR(10) NOT NULL,
   name VARCHAR(255) NOT NULL,
-  age INTEGER NOT NULL,
+  age VARCHAR(255) NOT NULL,
+  sex VARCHAR(255) NOT NULL,
   breed VARCHAR(255) NOT NULL,
   description TEXT,
   image VARCHAR(500)

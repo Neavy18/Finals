@@ -28,7 +28,7 @@ const getAnimals = () => {
   return db
   .query(stringQuery)
   .then((data) => {
-    return data.rows[0]
+    return data.rows
   })
   .catch((err) => err.message);
 };

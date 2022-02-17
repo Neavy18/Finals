@@ -1,8 +1,11 @@
 const express = require('express');
 const app = express();
 const PORT = 5000;
+const cors = require('cors');
+const { getUsers, getRefuges, getAnimals, getFavorites, registerUser } = require('./lib/dbHelpers');
 
-const { getUsers, getRefuges, getAnimals, getFavorites } = require('./lib/dbHelpers');
+app.use(express.json());
+app.use(cors());
 
 
 // ------> API GET REQUESTS <-------//
@@ -42,6 +45,23 @@ app.get('/api/favorites', (req, res) => {
     // res.status(200).json(response)
   })
 })
+
+// ------> POST REQUESTS <-------//
+
+//register user
+app.post('/register', (req, res) =>{
+
+  const firstName = req.body.firstName
+  const lastName = req.body.lastName
+  const email = req.body.email
+  const password = req.body.password
+
+  registerUser()
+  .then((response) => {
+    response.json("User registered succesfully")
+  })
+})
+
 
 app.listen(PORT, () => {
   console.log(`Server is listenning on PORT ${PORT}`);

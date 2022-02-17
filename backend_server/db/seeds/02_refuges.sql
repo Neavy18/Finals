@@ -1,0 +1,1 @@
+INSERT INTO refuges (name, address, city, postal_code) VALUES ('SPCA', '123 descaries', 'Montreal', 'H2I 1A0');

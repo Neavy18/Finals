@@ -1,0 +1,1 @@
+INSERT INTO favorites(user_id, animal_id) VALUES (1, 1); 

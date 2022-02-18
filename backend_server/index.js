@@ -62,10 +62,11 @@ app.post('/register', (req, res) => {
     if(!exists){
       registerUser(firstName, lastName, email, password)
       .then((response) => {
-        console.log("User registered succesfully");
+        console.log("User registered succesfully", response);
+        res.status(200).json(response)
       })
     } else {
-      
+      res.status(200).json({error: "Email already in use :("})
     }
   });
 });
@@ -82,9 +83,10 @@ app.post('/login', (req, res) =>  {
       loginUser(email, password)
       .then((response) => {
         console.log("User logged in succesfully");
+        res.status(200).json(response)
       })
     } else {
-      console.log("NO MATCH, SORRY!!")
+      res.status(200).json({error: "Password or email does not match :("})
     }
   });
 });

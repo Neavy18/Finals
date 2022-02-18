@@ -1,15 +1,24 @@
 import React from 'react';
 import './animal.css'
 
-const Animal = ({ animal, setSelectedAnimal }) => {
+const Animal = ({animal, setSelectedAnimalPop}) => {
+
+  const {
+    image,
+    name,
+    age,
+    breed,
+    // sex
+  } = animal
   
   return (
-    <div className='AnimalTile' onClick={() => setSelectedAnimal(animal)}>
-      <div className='AnimalImage'>{animal.image}</div>
+    <div className='AnimalTile' onClick={() => setSelectedAnimalPop(animal)}>
+      <div className='AnimalImage'><img src={image}/></div>
       <div className='AnimalInfo'>
-        <div>{animal.name}</div>
-        <div>{animal.age}</div>
-        <div>{animal.breed}</div>
+        <div>{name}</div>
+        <div>{age}</div>
+        <div>{breed}</div>
+        {/* <div>{sex}</div> */}
       </div>
     </div>
   ) 

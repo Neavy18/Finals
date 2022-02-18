@@ -11,8 +11,8 @@ const Header = () => {
   )
 }
 
-// everything related to Header goes here :  onClick js, html, icons etc
-// add logic to display icons at top when user is logged in, hide if not
+// const location = window.location.href
+// if location === (this is the whole url https://localhost:3000/home ---> google methods to just get end of url
 
 export default Header;
 

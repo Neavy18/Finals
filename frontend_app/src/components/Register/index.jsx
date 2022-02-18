@@ -45,7 +45,7 @@ const Register = (props) => {
         <input type="password" placeholder='password' 
         onChange={(e) => {setUser({...user, password: e.target.value})}} />
         <br></br>
-        <button type="submit" onClick={props.registerUser(user)}>Register</button>
+        <button type="submit" onClick={() => props.registerUser(user)}>Register</button>
       </form>
     </div>
   )

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-//import { Route } from 'react-router';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './components/Home';
 import Login from './components/Login';
@@ -12,16 +11,17 @@ import useInfoData from './Api';
 function App() {
 
   const {
-    registerUser
+    registerUser,
+    getAnimalInfo 
   } = useInfoData();
 
   return (
     <Router>
       <Layout></Layout>
       <Routes>
-          <Route path ="/" element={<Home />} />
+          <Route path ="/" element={<Home getAnimalInfo={getAnimalInfo}/>} />
           { <Route path = "/login" element={<Login />}/> }
-          { <Route path = "/register" element={<Register registerUser={registerUser} apple={'apple'} />}/> }
+          { <Route path = "/register" element={<Register registerUser={registerUser} />}/> }
           { <Route path = "/favorites" element={<Favorites />} /> }
       </Routes>
     </Router>

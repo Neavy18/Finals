@@ -98,22 +98,19 @@ import useInfoData from '../../Api';
 
 // ]
 
-const Home = ({ name }) => {
-
-  const {
-    getAnimalInfo
-  } = useInfoData();
-
-
-  
-  const [selectedAnimal, setSelectedAnimal] = useState(false);
+const Home = ({ getAnimalInfo }) => {
 
   getAnimalInfo().then((animals) => {
-    animals.map((animal) => {
-      console.log(animal);
-      <Animal animal={animal} setSelectedAnimal={setSelectedAnimal} />
-    })
-  })
+    console.log("this is getAnimalInfo after then  ---->", animals)
+  });
+  const [selectedAnimal, setSelectedAnimal] = useState(false);
+
+  // getAnimalInfo().then((animals) => {
+  //   animals.map((animal) => {
+  //     console.log(animal);
+  //     <Animal animal={animal} setSelectedAnimal={setSelectedAnimal} />
+  //   })
+  // })
 
   return (
     <div>

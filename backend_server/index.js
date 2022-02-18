@@ -56,9 +56,9 @@ app.post('/register', (req, res) => {
   const email = req.body.email
   const password = req.body.password
 
-  registerUser()
+  registerUser(firstName, lastName, email, password)
   .then((response) => {
-    response.json("User registered succesfully")
+    console.log("User registered succesfully");
   })
 })
 
@@ -70,7 +70,7 @@ app.post('/login', (req, res) =>  {
 
   loginUser()
   .then((response) => {
-    response.json("User logged in succesfully")
+    console.log("User logged in succesfully");
   })
 });
 

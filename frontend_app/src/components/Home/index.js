@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Animal from '../Animal';
 import AnimalPopUp from '../AnimalPopUp';
 import "./Home.css"
@@ -14,11 +14,13 @@ const Home = ({ name }) => {
  //this is to propagate my component (Animal Tile) with the needed data (from axios call to api/animals)
   const [animalsData, setAnimalsData] = useState(null)
 
-  getAnimalInfo().then((animals) => {
-    setAnimalsData(animals)
-  });
+  useEffect(() => {
+    (getAnimalInfo().then((animals) => {
+      setAnimalsData(animals)
+    }))
+    console.log("this is animal data --->", animalsData);
+  }, [setAnimalsData])
 
-  console.log("this is animal data --->", animalsData);
   if(animalsData === null) {
     return null
   }

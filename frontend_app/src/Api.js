@@ -28,7 +28,8 @@ const useInfoData = () => {
 
   const registerUser = (user) => {
     console.log("this is inside register user ---->", user);
-    axios.post("http://localhost:5000/register", user).then((res) => {
+    return axios.post("http://localhost:5000/register", user)
+    .then((res) => {
       if(res.data) {
         console.log("It's registered :)!!!!");
       } else {

@@ -5,7 +5,7 @@ const Animal = ({ animal, setSelectedAnimal }) => {
   
   return (
     <div className='AnimalTile' onClick={() => setSelectedAnimal(animal)}>
-      <div className='AnimalImage'>{animal.IMG}</div>
+      <div className='AnimalImage'>{animal.image}</div>
       <div className='AnimalInfo'>
         <div>{animal.name}</div>
         <div>{animal.age}</div>

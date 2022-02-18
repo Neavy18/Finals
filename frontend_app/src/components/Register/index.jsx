@@ -16,22 +16,22 @@ const Register = (props) => {
 
   return (
     <div className='Register'>
-      {/* <form onSubmit={(event) => event.preventDefault()}> */}
+      <form onSubmit={(event) => event.preventDefault()}> 
         <h2>Register</h2>
-        <input type="text" placeholder='First name'
+        <input type="text" placeholder='First name' required
         onChange={(e) => {setUser({...user, firstName: e.target.value})}} />
         <br></br>
-        <input type="text" placeholder='Last name' 
+        <input type="text" placeholder='Last name' required
         onChange={(e) => {setUser({...user, lastName: e.target.value})}} />
         <br></br>
-        <input type="email" placeholder='email' 
+        <input type="email" placeholder='email' required
         onChange={(e) => {setUser({...user, email: e.target.value})}} />
         <br></br>
-        <input type="password" placeholder='password' 
+        <input type="password" placeholder='password' required
         onChange={(e) => {setUser({...user, password: e.target.value})}} />
         <br></br>
         <button type="submit" onClick={() => props.registerUser(user)}>Register</button>
-      {/* </form> */}
+      </form> 
     </div>
   )
 }

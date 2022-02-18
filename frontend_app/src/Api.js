@@ -27,13 +27,10 @@ const useInfoData = () => {
   }
 
   const registerUser = (user) => {
-    // console.log("this is inside register user ---->", user);
     return axios.post("http://localhost:5000/register", user)
     .then((res) => {
-      if(res.data) {
-        console.log("It's registered :)!!!!");
-      } else {
-        console.log("not yet registered, but you'll get it soon :)!!!!!");
+      if(res.data.error) {
+        alert(res.data.error);
       }
     })
   }
@@ -42,11 +39,9 @@ const useInfoData = () => {
     console.log("this is inside login user ---->", user);
     return axios.post("http://localhost:5000/login", user)
     .then((res) => {
-      if(res.data) {
-        console.log("It's logged in :)!!!!");
-      } else {
-        console.log("not yet logged, but you'll get it soon :)!!!!!");
-      }
+      if(res.data.error) {
+       alert(res.data.error)
+      } 
     })
   }
 

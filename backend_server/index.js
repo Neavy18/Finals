@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = 5000;
 const cors = require('cors');
-const { getUsers, getRefuges, getAnimals, getFavorites, registerUser, loginUser } = require('./lib/dbHelpers');
+const { getUsers, getRefuges, getAnimals, getFavorites, registerUser, loginUser, userExists, emailPasswordMatch, } = require('./lib/dbHelpers');
 
 app.use(express.json());
 app.use(cors());
@@ -56,11 +56,19 @@ app.post('/register', (req, res) => {
   const email = req.body.email
   const password = req.body.password
 
-  registerUser(firstName, lastName, email, password)
-  .then((response) => {
-    console.log("User registered succesfully");
-  })
-})
+
+  userExists(email).then((exists) => {
+    console.log("do I exist?", exists)
+    if(!exists){
+      registerUser(firstName, lastName, email, password)
+      .then((response) => {
+        console.log("User registered succesfully");
+      })
+    } else {
+      
+    }
+  });
+});
 
 //login user
 app.post('/login', (req, res) =>  {
@@ -68,11 +76,17 @@ app.post('/login', (req, res) =>  {
   const email = req.body.email
   const password = req.body.password
 
-  console.log("email and password!! -->", email, password)
-  loginUser(email, password)
-  .then((response) => {
-    console.log("User logged in succesfully");
-  })
+  emailPasswordMatch(email, password).then((match) => {
+    if(match){
+      console.log("email and password!! -->", email, password)
+      loginUser(email, password)
+      .then((response) => {
+        console.log("User logged in succesfully");
+      })
+    } else {
+      console.log("NO MATCH, SORRY!!")
+    }
+  });
 });
 
 app.listen(PORT, () => {

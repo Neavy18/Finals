@@ -1,5 +1,32 @@
 const db = require("./db.js");
 
+// this function checks that a user email does not already exist in the database
+const userExists = (email) => {
+  const stringQuery = 'SELECT * FROM users WHERE email = $1;'
+  return db
+  .query(stringQuery, [email])
+  .then((data) => {
+    if(!data.rows[0]){
+      return false
+    } else {
+      return true
+    }
+  });
+};
+
+const emailPasswordMatch = (email, password) => {
+  const stringQuery ='SELECT * FROM users WHERE email = $1 AND password = $2;'
+  return db
+  .query(stringQuery, [email, password])
+  .then((data) => {
+    if(!data.rows[0]){
+      return false
+    } else {
+      return true
+    }
+  });
+};
+
 //get Users query
 const getUsers = () => {
   const stringQuery = 'SELECT * FROM users'
@@ -13,11 +40,11 @@ const getUsers = () => {
 
 //get Refuges query
 const getRefuges = () => {
-  const stringQuery = 'SELECT * FROM animals'
+  const stringQuery = 'SELECT * FROM refuges'
   return db
   .query(stringQuery)
   .then((data) => {
-    return data.rows[0]
+    return data.rows
   })
   .catch((err) => err.message);
 };
@@ -39,14 +66,14 @@ const getFavorites = () => {
   return db
   .query(stringQuery)
   .then((data) => {
-    return data.rows[0]
+    return data.rows
   })
   .catch((err) => err.message);
 };
 
 //register User query ---> add error message if user already exist!
+
 const registerUser = (firstName, lastName, email, password) => {
-  // console.log("this is register user info-->", firstName, lastName, email, password)
   const stringQuery = 'INSERT INTO users (first_name, last_name, email, password) VALUES ($1, $2, $3, $4) RETURNING *;'
   return db 
   .query(stringQuery, [firstName, lastName, email, password])
@@ -56,8 +83,8 @@ const registerUser = (firstName, lastName, email, password) => {
   .catch((err) => {
     console.log("Error msg in dbHelpers registerUser was triggered --->")
     err.message
-  });
-}
+  });   
+};
 
 //login User query ---> add error message if no user is found!
 const loginUser = (email, password) => {
@@ -76,7 +103,8 @@ const loginUser = (email, password) => {
     console.log("Error msg in dbHelpers loginUser was triggered --->")
     err.message
   });
-}
+};
+
 
 module.exports = {
   getUsers,
@@ -84,5 +112,7 @@ module.exports = {
   getAnimals,
   getFavorites,
   registerUser,
-  loginUser
+  loginUser,
+  userExists,
+  emailPasswordMatch
 }

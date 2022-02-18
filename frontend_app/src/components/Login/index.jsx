@@ -22,13 +22,15 @@ const Login = (props) => {
   return (
     <div className='Login'>
     <h2>Login</h2>
-    <input type="email" placeholder='email' 
-      onChange={(e) => {setUserLogin({...userLogin, email:e.target.value})}} />
-    <br></br>
-    <input type="password" placeholder='password' 
-      onChange={(e) => {setUserLogin({...userLogin, password:e.target.value})}} />
+    <form onSubmit={(event) => event.preventDefault()}> 
+      <input type="email" placeholder='email' required
+        onChange={(e) => {setUserLogin({...userLogin, email:e.target.value})}} />
       <br></br>
-    <button onClick={()=>props.loginUser(userLogin)}>Login</button>
+      <input type="password" placeholder='password' required
+        onChange={(e) => {setUserLogin({...userLogin, password:e.target.value})}}/>
+        <br></br>
+      <button onClick={()=>props.loginUser(userLogin)}>Login</button>
+    </form>
   </div>
   )
 }

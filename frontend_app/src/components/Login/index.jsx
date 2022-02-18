@@ -2,31 +2,33 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Login.css'
 
-const Login = () => {
+const Login = (props) => {
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword]  = useState('')
+  const [userLogin, setUserLogin] = useState({
+    email: '',
+    password: ''
+  })
+   console.log("login component--->", userLogin);
 
-
-  const login = () => {
-    axios.post('http://localhost5000/login', {
-      email: email, 
-      password: password
-    }).then((response) => {
-      console.log("this is the axios login user post response -->", response);
-    });
-  };
+  // const login = () => {
+  //   axios.post('http://localhost5000/login', {
+  //     email: email, 
+  //     password: password
+  //   }).then((response) => {
+  //     console.log("this is the axios login user post response -->", response);
+  //   });
+  // };
 
   return (
     <div className='Login'>
     <h2>Login</h2>
     <input type="email" placeholder='email' 
-      onChange={(e) => {setEmail(e.target.value)}} />
+      onChange={(e) => {setUserLogin({...userLogin, email:e.target.value})}} />
     <br></br>
     <input type="password" placeholder='password' 
-      onChange={(e) => {setPassword(e.target.value)}} />
+      onChange={(e) => {setUserLogin({...userLogin, password:e.target.value})}} />
       <br></br>
-    <button onClick={login}>Login</button>
+    <button onClick={()=>props.loginUser(userLogin)}>Login</button>
   </div>
   )
 }

@@ -68,12 +68,12 @@ app.post('/login', (req, res) =>  {
   const email = req.body.email
   const password = req.body.password
 
-  loginUser()
+  console.log("email and password!! -->", email, password)
+  loginUser(email, password)
   .then((response) => {
     console.log("User logged in succesfully");
   })
 });
-
 
 app.listen(PORT, () => {
   console.log(`Server is listenning on PORT ${PORT}`);

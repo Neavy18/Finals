@@ -5,6 +5,7 @@ const Header = () => {
   return (
     <div className='Header'>
       <button>Profile</button>
+      <i className='fas fa-cloud'></i>
       <h2>Furever Home</h2>
       <button>Extra parameters</button>
     </div>

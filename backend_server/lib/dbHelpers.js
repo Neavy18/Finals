@@ -6,7 +6,7 @@ const getUsers = () => {
   return db
   .query(stringQuery)
   .then((data) => {
-    return data.rows[0]
+    return data.rows
   })
   .catch((err) => err.message);
 };
@@ -48,7 +48,7 @@ const getFavorites = () => {
 const registerUser = (firstName, lastName, email, password) => {
   const stringQuery = 'INSERT INTO users (first_name, last_name, email, password) VALUES ($1, $2, $3, $4);'
   return db 
-  .query(stringQuery [firstName, lastName, email, password])
+  .query(stringQuery, [firstName, lastName, email, password])
   .then((data) => {
     console.log("User added to database!")
   })

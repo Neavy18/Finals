@@ -24,10 +24,22 @@ const useInfoData = () => {
       console.log("This is is res.data from getAnimalInfo -->", response.data)
       return response.data
     })
-  } 
+  }
+
+  const registerUser = (user) => {
+    console.log("this is inside register user ---->", user);
+    axios.post("http://localhost:5000/register", user).then((res) => {
+      if(res.data) {
+        console.log("It's registered :)!!!!");
+      } else {
+        console.log("not yet, but you'll get it soon :)!!!!!");
+      }
+    })
+  }
 
   return  {
-    getAnimalInfo
+    getAnimalInfo,
+    registerUser
   }
 }
 

@@ -1,13 +1,14 @@
 import React from 'react';
 import './Header.css';
 
+// display the header component
+
 const Header = () => {
   return (
     <div className='Header'>
-      <button>Profile</button>
-      <i className='fas fa-cloud'></i>
+      <button><i class="fa-solid fa-user"></i></button>
       <h2>Furever Home</h2>
-      <button>Extra parameters</button>
+      <button><i class="fa-solid fa-magnifying-glass-plus"></i></button>
     </div>
   )
 }

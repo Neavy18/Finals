@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 const useInfoData = () => {
 
-  const [animalList, setAnimalList] = useState({})
+  // const [animalList, setAnimalList] = useState({})
 
   const [animalInfo, setAnimalInfo] = useState({
     animal_id: null,

@@ -3,6 +3,7 @@ import Animal from '../Animal';
 import AnimalPopUp from '../AnimalPopUp';
 import "./Favorites.css"
 
+//the my favorites with a similar display as the homepage
 
 const ANIMALS = [
   {

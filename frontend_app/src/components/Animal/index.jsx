@@ -8,17 +8,21 @@ const Animal = ({animal, setSelectedAnimalPop}) => {
     name,
     age,
     breed,
-    // sex
+    // sex,
   } = animal
   
   return (
     <div className='AnimalTile' onClick={() => setSelectedAnimalPop(animal)}>
       <div className='AnimalImage'><img src={image}/></div>
       <div className='AnimalInfo'>
-        <div>{name}</div>
-        <div>{age}</div>
-        <div>{breed}</div>
-        {/* <div>{sex}</div> */}
+        <div className='AnimalNameAge'>
+          <div>{name}</div>
+          <div>{age}</div>
+        </div>
+        <div className='AnimalBreedSex'>
+          <div>{breed}</div>
+          {/* <div>{sex}</div> */}
+        </div>
       </div>
     </div>
   ) 

@@ -115,12 +115,6 @@ const Home = ({ name }) => {
     })
   })
 
-   
-
-
-
-
-
   return (
     <div>
        <h1 className='Slogan'>Find your Soulmate</h1>

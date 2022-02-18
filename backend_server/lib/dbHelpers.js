@@ -46,11 +46,12 @@ const getFavorites = () => {
 
 //register User query ---> add error message if user already exist!
 const registerUser = (firstName, lastName, email, password) => {
-  const stringQuery = 'INSERT INTO users (first_name, last_name, email, password) VALUES ($1, $2, $3, $4);'
+  console.log("this is register user info-->", firstName, lastName, email, password)
+  const stringQuery = 'INSERT INTO users (first_name, last_name, email, password) VALUES ($1, $2, $3, $4) RETURNING *;'
   return db 
   .query(stringQuery, [firstName, lastName, email, password])
   .then((data) => {
-    console.log("User added to database!")
+    console.log("this is data -->", data)
   })
   .catch((err) => {
     console.log("Error msg in dbHelpers registerUser was triggered --->")

@@ -14,7 +14,8 @@ import useInfoData from './Api';
 function App() {
 
   const {
-    registerUser
+    registerUser,
+    loginUser
   } = useInfoData();
 
   return (
@@ -22,7 +23,7 @@ function App() {
       <Layout></Layout>
       <Routes>
           <Route path ="/" element={<Home />} />
-          { <Route path = "/login" element={<Login />}/> }
+          { <Route path = "/login" element={<Login loginUser={loginUser}/>}/> }
           { <Route path = "/register" element={<Register registerUser={registerUser} />}/> }
           { <Route path = "/favorites" element={<Favorites />} /> }
       </Routes>

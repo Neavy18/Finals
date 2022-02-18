@@ -46,7 +46,7 @@ const getFavorites = () => {
 
 //register User query ---> add error message if user already exist!
 const registerUser = (firstName, lastName, email, password) => {
-  console.log("this is register user info-->", firstName, lastName, email, password)
+  // console.log("this is register user info-->", firstName, lastName, email, password)
   const stringQuery = 'INSERT INTO users (first_name, last_name, email, password) VALUES ($1, $2, $3, $4) RETURNING *;'
   return db 
   .query(stringQuery, [firstName, lastName, email, password])
@@ -61,11 +61,16 @@ const registerUser = (firstName, lastName, email, password) => {
 
 //login User query ---> add error message if no user is found!
 const loginUser = (email, password) => {
+  console.log("this is the email pasword query spot -->", email, password)
   const stringQuery = 'SELECT * FROM users WHERE email = $1 AND password = $2;'
   return db 
-  .query(stringQuery [email, password])
+  .query(stringQuery, [email, password])
   .then((data) => {
-    console.log("User logged in!")
+    if(!data.rows[0]){
+      console.log("User does not exist")
+    } else {
+      console.log("User logged in!", data.rows)
+    }
   })
   .catch((err) => {
     console.log("Error msg in dbHelpers loginUser was triggered --->")

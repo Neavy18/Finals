@@ -6,9 +6,9 @@ import './Header.css';
 const Header = () => {
   return (
     <div className='Header'>
-      <button><i class="fa-solid fa-user"></i></button>
+      <button><i className="fa-solid fa-user"></i></button>
       <h2>Furever Home</h2>
-      <button><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+      <button><i className="fa-solid fa-magnifying-glass-plus"></i></button>
     </div>
   )
 }

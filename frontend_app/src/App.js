@@ -9,6 +9,8 @@ import Favorites from './components/Favorites';
 
 import useInfoData from './Api';
 
+//All of the routes are populated with their components here
+
 function App() {
 
   const {

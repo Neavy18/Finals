@@ -1,6 +1,8 @@
 import React from 'react';
 import './animal.css'
 
+//creates the animal tiles
+
 const Animal = ({animal, setSelectedAnimalPop}) => {
 
   const {
@@ -8,7 +10,7 @@ const Animal = ({animal, setSelectedAnimalPop}) => {
     name,
     age,
     breed,
-    // sex,
+    sex,
   } = animal
   
   return (
@@ -21,12 +23,11 @@ const Animal = ({animal, setSelectedAnimalPop}) => {
         </div>
         <div className='AnimalBreedSex'>
           <div>{breed}</div>
-          {/* <div>{sex}</div> */}
+          <div>{sex}</div> 
         </div>
       </div>
     </div>
   ) 
-  // populate that with name, age, breed, img form json of api call
 }
 
 export default Animal;

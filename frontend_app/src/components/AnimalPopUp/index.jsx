@@ -1,6 +1,8 @@
 import React from 'react';
 import './animalPopUp.css'
 
+//creates the animal PopUp
+
 const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop}) => {
   
   const {

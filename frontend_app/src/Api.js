@@ -49,7 +49,7 @@ const useInfoData = () => {
   // }
 
   return  {
-    getAnimalInfo
+    getAnimalInfo,
     // registerUser
     // loginUser
   }

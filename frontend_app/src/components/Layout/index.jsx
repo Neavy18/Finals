@@ -5,6 +5,7 @@ import Header from '../Header';
 //overall layout of the page
 
 const Layout = ({ children }) => {
+  
     return (
       <div>
         <Header />

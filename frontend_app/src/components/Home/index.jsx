@@ -20,20 +20,20 @@ const Home = ({ name }) => {
    //this is to propagate my component (Animal Tile) with the needed data (from axios call to api/animals)
   const [selectedAnimalPop, setSelectedAnimalPop] = useState(false);
   const [animalsData, setAnimalsData] = useState(null);
-  const [refugesData, setRefugesData] = useState(null);
+  // const [refugesData, setRefugesData] = useState(null);
 
 
   useEffect(() => {
     (getAnimalInfo().then((animals) => {
       setAnimalsData(animals)
-    })).then(getRefugesInfo().then((refuges) => {
-      setRefugesData(refuges)
     }))
-  }, [setAnimalsData, setRefugesData])
+  }, [setAnimalsData])
 
+  //.then(getRefugesInfo().then((refuges) => {
+  //   setRefugesData(refuges)
+  // }))
 
-
-  if(animalsData === null && refugesData === null) {
+  if(animalsData === null) {
     return null
   }
 
@@ -48,7 +48,7 @@ const Home = ({ name }) => {
      ))}
    </div>
    {selectedAnimalPop && (
-     <AnimalPopUp selectedAnimalPop={selectedAnimalPop} setSelectedAnimalPop={setSelectedAnimalPop} refugesData={refugesData}/>
+     <AnimalPopUp selectedAnimalPop={selectedAnimalPop} setSelectedAnimalPop={setSelectedAnimalPop} />
    )}
  </div> )
 

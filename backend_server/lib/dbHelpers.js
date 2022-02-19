@@ -118,6 +118,15 @@ const matchRefugeById = (id) => {
     } else {
       return data.rows[0]
     }
+  });
+};
+
+const addToFavorites = (userId, animalId) => {
+  const stringQuery = 'INSERT INTO favorites (user_id, animal_id) VALUES ($1, $2) RETURNING *;'
+  return db
+  .query(stringQuery, [userId, animalId])
+  .then((data) => {
+    return data.rows[0]
   })
 }
 
@@ -130,5 +139,6 @@ module.exports = {
   loginUser,
   userExists,
   emailPasswordMatch,
-  matchRefugeById
+  matchRefugeById,
+  addToFavorites
 }

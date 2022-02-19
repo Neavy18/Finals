@@ -7,8 +7,7 @@ const { getUsers, getRefuges, getAnimals, getFavorites, registerUser, loginUser,
 app.use(express.json());
 app.use(cors());
 
-
-// ------> API GET REQUESTS <-------//
+// ------> GET REQUESTS <-------//
 
 //api users
 app.get('/api/users', (req, res) => {
@@ -78,7 +77,6 @@ app.post('/login', (req, res) =>  {
 
   emailPasswordMatch(email, password).then((match) => {
     if(match){
-      //console.log("email and password!! -->", email, password)
       loginUser(email, password)
       .then((response) => {
         console.log("Express login", response);

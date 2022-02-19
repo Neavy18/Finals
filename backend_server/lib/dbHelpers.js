@@ -108,6 +108,18 @@ const loginUser = (email, password) => {
   });
 };
 
+const matchRefugeById = (id) => {
+  const stringQuery = 'SELECT * FROM refuges WHERE id = $1;'
+  return db
+  .query(stringQuery, [id])
+  .then((data) => {
+    if(!data.rows[0]){
+      console.log("Couldn't find refuge")
+    } else {
+      return data.rows[0]
+    }
+  })
+}
 
 module.exports = {
   getUsers,
@@ -117,5 +129,6 @@ module.exports = {
   registerUser,
   loginUser,
   userExists,
-  emailPasswordMatch
+  emailPasswordMatch,
+  matchRefugeById
 }

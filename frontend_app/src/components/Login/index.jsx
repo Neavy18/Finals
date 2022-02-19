@@ -1,23 +1,29 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Login.css'
+import { Link , useNavigate} from 'react-router-dom';
+
 
 const Login = (props) => {
+
+  let history = useNavigate();
 
   const [userLogin, setUserLogin] = useState({
     email: '',
     password: ''
   })
-   console.log("login component--->", userLogin);
 
-  // const login = () => {
-  //   axios.post('http://localhost5000/login', {
-  //     email: email, 
-  //     password: password
-  //   }).then((response) => {
-  //     console.log("this is the axios login user post response -->", response);
-  //   });
-  // };
+  const loginUser = (user) => {
+    console.log("this is inside login user ---->", user);
+    return axios.post("http://localhost:5000/login", user)
+    .then((res) => {
+      if(res.data.error) {
+       alert(res.data.error)
+      } else {
+        history("/home")
+      }
+    })
+  };
 
   return (
     <div className='Login'>
@@ -29,8 +35,11 @@ const Login = (props) => {
       <input type="password" placeholder='password' required
         onChange={(e) => {setUserLogin({...userLogin, password:e.target.value})}}/>
         <br></br>
-      <button onClick={()=>props.loginUser(userLogin)}>Login</button>
+      <button onClick={()=>loginUser(userLogin)}>Login</button>
     </form>
+    <div>
+    <h4>Not a user yet? <Link to="/register">Register!</Link></h4>
+    </div>
   </div>
   )
 }

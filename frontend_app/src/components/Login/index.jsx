@@ -20,7 +20,9 @@ const Login = (props) => {
       if(res.data.error) {
        alert(res.data.error)
       } else {
-        history("/home")
+        console.log('this is res.dataaaaaaa->', res.data)
+        localStorage.setItem('currentUser', JSON.stringify(res.data))
+        history('/home')
       }
     })
   };

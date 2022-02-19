@@ -58,11 +58,10 @@ app.post('/register', (req, res) => {
 
 
   userExists(email).then((exists) => {
-    console.log("do I exist?", exists)
     if(!exists){
       registerUser(firstName, lastName, email, password)
       .then((response) => {
-        console.log("User registered succesfully", response);
+        console.log("This is from the express server -->", response);
         res.status(200).json(response)
       })
     } else {
@@ -79,10 +78,10 @@ app.post('/login', (req, res) =>  {
 
   emailPasswordMatch(email, password).then((match) => {
     if(match){
-      console.log("email and password!! -->", email, password)
+      //console.log("email and password!! -->", email, password)
       loginUser(email, password)
       .then((response) => {
-        console.log("User logged in succesfully");
+        console.log("Express login", response);
         res.status(200).json(response)
       })
     } else {

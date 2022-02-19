@@ -22,7 +22,7 @@ const useInfoData = () => {
   const getAnimalInfo = () => {
     return axios.get('http://localhost:5000/api/animals')
     .then((response) => {
-      console.log("This is is res.data from getAnimalInfo -->", response.data)
+      // console.log("This is is res.data from getAnimalInfo -->", response.data)
       return response.data
     })
   }

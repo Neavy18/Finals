@@ -27,6 +27,8 @@ const Register = (props) => {
         if(res.data.error) {
           alert(res.data.error);
         } else {
+          localStorage.setItem('currentUser', JSON.stringify(res.data))
+          console.log("this is re.dataaaaa ->", res.data)
           history("/home")
         }
       });

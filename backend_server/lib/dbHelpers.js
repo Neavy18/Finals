@@ -79,7 +79,8 @@ const registerUser = (firstName, lastName, email, password) => {
   return db 
   .query(stringQuery, [firstName, lastName, email, password])
   .then((data) => {
-    console.log("this is data -->", data.rows[0])
+    console.log("this is data from Database(pg) -->", data.rows[0])
+    return data.rows[0]
   })
   .catch((err) => {
     console.log("Error msg in dbHelpers registerUser was triggered --->")
@@ -98,6 +99,7 @@ const loginUser = (email, password) => {
       console.log("User does not exist")
     } else {
       console.log("User logged in!", data.rows)
+      return data.rows[0]
     }
   })
   .catch((err) => {

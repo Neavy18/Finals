@@ -13,18 +13,14 @@ import useInfoData from './Api';
 
 function App() {
 
-  // const {
-    
-  // } = useInfoData();
-
   return (
     <Router>
       <Layout></Layout>
       <Routes>
-          <Route path ="/home" element={<Home />} />
-          { <Route path = "/" element={<Login/>}/> }
-          { <Route path = "/register" element={<Register />}/> }
-          { <Route path = "/favorites" element={<Favorites />} /> }
+        { <Route path ="/" element={<Home />} />}
+        { <Route path = "/login" element={<Login/>}/> }
+        { <Route path = "/register" element={<Register />}/> }
+        { <Route path = "/favorites" element={<Favorites />} /> }
       </Routes>
     </Router>
   

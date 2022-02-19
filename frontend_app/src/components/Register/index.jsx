@@ -3,7 +3,6 @@ import axios from 'axios';
 import './Register.css';
 import { Link , useNavigate} from 'react-router-dom';
 
-//register logic that grabs the user info
 
 const Register = (props) => {
 
@@ -14,11 +13,13 @@ const Register = (props) => {
     lastName: '',
     email: '',
     password: '',
-  })
-  console.log(user);
+  });
 
+  let currentUser = localStorage.getItem('currentUser')
+  currentUser = JSON.parse(currentUser)
+
+// ---> Axios call to send the info being inputted to the backend for user registration
   const registerUser = (user) => {
-
     if(!user.firstName || !user.lastName || !user.email || !user.password) {
       alert("No empty field, please try again :)")
     } else {
@@ -28,32 +29,41 @@ const Register = (props) => {
           alert(res.data.error);
         } else {
           localStorage.setItem('currentUser', JSON.stringify(res.data))
-          console.log("this is re.dataaaaa ->", res.data)
-          history("/home")
+          history("/")
         }
       });
     }
   };
 
-  return (
+  const registerDisplay = (
     <div className='Register'>
-      <form onSubmit={(event) => event.preventDefault()}> 
-        <h2>Register</h2>
-        <input type="text" placeholder='First name' required
-        onChange={(e) => {setUser({...user, firstName: e.target.value})}} />
-        <br></br>
-        <input type="text" placeholder='Last name' required
-        onChange={(e) => {setUser({...user, lastName: e.target.value})}} />
-        <br></br>
-        <input type="email" placeholder='email' required
-        onChange={(e) => {setUser({...user, email: e.target.value})}} />
-        <br></br>
-        <input type="password" placeholder='password' required
-        onChange={(e) => {setUser({...user, password: e.target.value})}} />
-        <br></br>
-        <button type="submit" onClick={() => registerUser(user)}>Register</button>
-      </form> 
-      <h4>Already a user yet? <Link to="/">Login!</Link></h4>
+    <form onSubmit={(event) => event.preventDefault()}> 
+      <h2>Register</h2>
+      <input type="text" placeholder='First name' required
+      onChange={(e) => {setUser({...user, firstName: e.target.value})}} />
+      <br></br>
+      <input type="text" placeholder='Last name' required
+      onChange={(e) => {setUser({...user, lastName: e.target.value})}} />
+      <br></br>
+      <input type="email" placeholder='email' required
+      onChange={(e) => {setUser({...user, email: e.target.value})}} />
+      <br></br>
+      <input type="password" placeholder='password' required
+      onChange={(e) => {setUser({...user, password: e.target.value})}} />
+      <br></br>
+      <button type="submit" onClick={() => registerUser(user)}>Register</button>
+    </form> 
+    <h4>Already a user yet? <Link to="/">Login!</Link></h4>
+  </div>
+  )
+  const alreadyLoggedInDisplay = (
+    <div>
+      <h1>You are already logged in!</h1>
+    </div>
+  )
+  return (
+    <div>
+      {currentUser ? alreadyLoggedInDisplay : registerDisplay}
     </div>
   )
 }

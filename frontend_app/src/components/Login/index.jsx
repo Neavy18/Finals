@@ -3,7 +3,6 @@ import axios from 'axios';
 import './Login.css'
 import { Link , useNavigate} from 'react-router-dom';
 
-
 const Login = (props) => {
 
   let history = useNavigate();
@@ -11,23 +10,32 @@ const Login = (props) => {
   const [userLogin, setUserLogin] = useState({
     email: '',
     password: ''
-  })
+  });
 
+  let currentUser = localStorage.getItem('currentUser')
+  currentUser = JSON.parse(currentUser)
+
+  // ---> Axios call to send the info being inputted to the backend for user authentification
   const loginUser = (user) => {
-    console.log("this is inside login user ---->", user);
     return axios.post("http://localhost:5000/login", user)
     .then((res) => {
       if(res.data.error) {
        alert(res.data.error)
       } else {
-        console.log('this is res.dataaaaaaa->', res.data)
         localStorage.setItem('currentUser', JSON.stringify(res.data))
-        history('/home')
+        history('/')
       }
     })
   };
-
-  return (
+  
+  const loggedInDisplay = (
+    <div>
+      <h1>
+        You are already logged in!
+      </h1>
+    </div>
+  )
+  const notLoggedInDisplay = (
     <div className='Login'>
     <h2>Login</h2>
     <form onSubmit={(event) => event.preventDefault()}> 
@@ -44,6 +52,11 @@ const Login = (props) => {
     </div>
   </div>
   )
-}
+  return (
+    <div>
+      {currentUser ? loggedInDisplay : notLoggedInDisplay}
+    </div>
+  )
+};
 
 export default Login;

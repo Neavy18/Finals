@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
-import axios from 'axios'
+import axios from 'axios';
 import './Register.css';
+import { Link , useNavigate} from 'react-router-dom';
 
 //register logic that grabs the user info
 
 const Register = (props) => {
+
+  let history = useNavigate();
 
   const [user, setUser] = useState({
     firstName: '',
@@ -13,6 +16,17 @@ const Register = (props) => {
     password: '',
   })
   //console.log(user);
+
+  const registerUser = (user) => {
+    return axios.post("http://localhost:5000/register", user)
+    .then((res) => {
+      if(res.data.error) {
+        alert(res.data.error);
+      } else {
+        history("/home")
+      }
+    });
+  };
 
   return (
     <div className='Register'>
@@ -30,8 +44,9 @@ const Register = (props) => {
         <input type="password" placeholder='password' required
         onChange={(e) => {setUser({...user, password: e.target.value})}} />
         <br></br>
-        <button type="submit" onClick={() => props.registerUser(user)}>Register</button>
+        <button type="submit" onClick={() => registerUser(user)}>Register</button>
       </form> 
+      <h4>Already a user yet? <Link to="/">Login!</Link></h4>
     </div>
   )
 }

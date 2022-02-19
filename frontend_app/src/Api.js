@@ -23,7 +23,7 @@ const useInfoData = () => {
   const getRefugesInfo = () => {
     return axios.get('http://localhost:5000/api/refuges')
     .then((res) => {
-      console.log("from inside the AXIOS GET of REFUGES--->", res.data);
+      console.log("from inside the AXIOS GET of REFUGES---:>", res.data);
       return res.data
     })
   }

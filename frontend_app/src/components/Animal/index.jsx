@@ -1,5 +1,8 @@
 import React from 'react';
 import './animal.css'
+import axios from 'axios';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 //creates the animal tiles
 
@@ -14,7 +17,9 @@ const Animal = ({animal, setSelectedAnimalPop}) => {
   } = animal
   
   return (
-    <div className='AnimalTile' onClick={() => setSelectedAnimalPop(animal)}>
+    <div className='AnimalTile' onClick={() => {
+      setSelectedAnimalPop(animal)
+    }}>
       <div className='AnimalImage'><img src={image}/></div>
       <div className='AnimalInfo'>
         <div className='AnimalNameAge'>

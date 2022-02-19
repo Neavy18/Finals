@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const PORT = 5000;
 const cors = require('cors');
-const { getUsers, getRefuges, getAnimals, getFavorites, registerUser, loginUser, userExists, emailPasswordMatch, } = require('./lib/dbHelpers');
+const { getUsers, getRefuges, getAnimals, getFavorites, registerUser, loginUser, userExists, emailPasswordMatch, matchRefugeById } = require('./lib/dbHelpers');
+const { response } = require('express');
 
 app.use(express.json());
 app.use(cors());
@@ -85,6 +86,14 @@ app.post('/login', (req, res) =>  {
     } else {
       res.status(200).json({error: "Password or email does not match :("})
     }
+  });
+});
+
+app.post('/refuge', (req, res) => {
+  const id = req.body.refuge_id
+  matchRefugeById(id)
+  .then((response) => {
+    res.status(200).json(response)
   });
 });
 

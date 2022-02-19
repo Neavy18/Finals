@@ -1,20 +1,36 @@
 import React from 'react';
 import './animalPopUp.css'
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 //creates the animal PopUp
 
-const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop}) => {
-  
+const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, refugesData}) => {
+
+
+
   const {
     name,
-    // refuge: {
-    //   name: refugeName,
-    //   address,
-    //   postal_code
-    // },
     image,
     description
   } = selectedAnimalPop
+
+  const getRefugeById = (animal, refugesList) => {
+    refugesList.map((refuge) => {
+      if (animal.refuge_id === refuge.id) {
+        console.log("this is inside the function ---->", refuge);
+        return refuge
+      }
+    })
+  }
+  let selectedRefuge = getRefugeById(selectedAnimalPop, refugesData)
+  
+  // const {
+  //   address,
+  //   city,
+  //   postal_code
+  // } = selectedRefuge
+
 
   return (
     <div className='AnimalPopUp'>
@@ -26,9 +42,9 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop}) => {
 
         <div className='RefugeInfo'>
          <h6>{name} currently await his furever home at:</h6> 
-          {/* <div>{refugeName}</div>
-          <div>{address}</div>
-          <div>{postal_code}</div> */}
+          {/* <div>{refugeData.name}</div> */}
+          {/* <div>{address}</div>
+          <div>{postal_code}</div>  */}
         </div>
         <div className='AnimalPopImage'><img src={image}/></div>
         <div className='AnimalDesc'>

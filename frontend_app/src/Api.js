@@ -28,9 +28,23 @@ const useInfoData = () => {
     })
   }
 
+  const likeAnimal = (userId, animalId) => {
+    
+    const addToFavorite = {
+      user_id: userId,
+      animal_id: animalId
+    }
+    console.log("this is add to fav -->", addToFavorite)
+    return axios.post('http://localhost:5000/liked', addToFavorite)
+    .then((res) => {
+      console.log("this is liked animals--->", res.data)
+    })
+  }
+
   return  {
     getAnimalInfo,
-    getRefugesInfo
+    getRefugesInfo,
+    likeAnimal
   }
 }
 

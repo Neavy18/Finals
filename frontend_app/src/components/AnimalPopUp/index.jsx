@@ -2,12 +2,15 @@ import React from 'react';
 import './animalPopUp.css'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import useInfoData from '../../Api';
 
 //creates the animal PopUp
 
 const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, refugesData}) => {
 
-
+  const {
+    likeAnimal
+  } = useInfoData();
 
   const {
     name,
@@ -15,15 +18,18 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, refugesData}) => 
     description
   } = selectedAnimalPop
 
-  const getRefugeById = (animal, refugesList) => {
-    refugesList.map((refuge) => {
-      if (animal.refuge_id === refuge.id) {
-        console.log("this is inside the function ---->", refuge);
-        return refuge
-      }
-    })
-  }
-  let selectedRefuge = getRefugeById(selectedAnimalPop, refugesData)
+  let currentUser = localStorage.getItem('currentUser')
+  currentUser = JSON.parse(currentUser)
+
+  // const getRefugeById = (animal, refugesList) => {
+  //   refugesList.map((refuge) => {
+  //     if (animal.refuge_id === refuge.id) {
+  //       console.log("this is inside the function ---->", refuge);
+  //       return refuge
+  //     }
+  //   })
+  // }
+  // let selectedRefuge = getRefugeById(selectedAnimalPop, refugesData)
   
   // const {
   //   address,
@@ -31,7 +37,12 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, refugesData}) => 
   //   postal_code
   // } = selectedRefuge
 
-
+  //console.log('this is current user --->', currentUser)
+  //console.log('this is animalpop up id --->,', selectedAnimalPop.id)
+  const popIconHeart = ( <button onClick={()=> likeAnimal(currentUser.id, selectedAnimalPop.id) }><i className="fa-solid fa-heart"></i></button>)
+  const popIconDelete = (<div>Delete!</div>);
+  const notLogged = (<div></div>)
+  
   return (
     <div className='AnimalPopUp'>
       <div className='AnimalPopUpInner'>
@@ -53,7 +64,7 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, refugesData}) => 
         </div>
         <div className='Buttons'>
           <button>Get more info about {name}</button>
-          <button>Like Button</button>
+          {currentUser ? popIconHeart : notLogged}
         </div>
       </div>  
   </div>

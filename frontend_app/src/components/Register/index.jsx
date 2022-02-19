@@ -15,17 +15,22 @@ const Register = (props) => {
     email: '',
     password: '',
   })
-  //console.log(user);
+  console.log(user);
 
   const registerUser = (user) => {
-    return axios.post("http://localhost:5000/register", user)
-    .then((res) => {
-      if(res.data.error) {
-        alert(res.data.error);
-      } else {
-        history("/home")
-      }
-    });
+
+    if(!user.firstName || !user.lastName || !user.email || !user.password) {
+      alert("No empty field, please try again :)")
+    } else {
+      return axios.post("http://localhost:5000/register", user)
+      .then((res) => {
+        if(res.data.error) {
+          alert(res.data.error);
+        } else {
+          history("/home")
+        }
+      });
+    }
   };
 
   return (

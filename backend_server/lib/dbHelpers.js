@@ -1,4 +1,3 @@
-const { DataRowMessage } = require("pg-protocol/dist/messages");
 const db = require("./db.js");
 
 // this function checks that a user email does not already exist in the database
@@ -15,11 +14,11 @@ const userExists = (email) => {
   });
 };
 
-// this function checks that a user's email and password match the ones in the database
+// this function checks that a user email and password match the ones in the database
 const emailPasswordMatch = (email, password) => {
-  const stringQuery ='SELECT * FROM users WHERE email = $1 AND password = $2;'
+  const stringQuery ='SELECT * FROM users WHERE email = $1 AND password =$2;'
   return db
-  .query(stringQuery, [email, password])
+    .query(stringQuery, [email, password])
   .then((data) => {
     if(!data.rows[0]){
       return false
@@ -80,8 +79,7 @@ const registerUser = (firstName, lastName, email, password) => {
   return db 
   .query(stringQuery, [firstName, lastName, email, password])
   .then((data) => {
-    console.log("this is data -->", data.rows)
-    return data.rows
+    console.log("this is data -->", data.rows[0])
   })
   .catch((err) => {
     console.log("Error msg in dbHelpers registerUser was triggered --->")

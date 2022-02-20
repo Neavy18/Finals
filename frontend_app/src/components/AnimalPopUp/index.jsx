@@ -1,21 +1,30 @@
 import React from 'react';
 import './animalPopUp.css'
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import useInfoData from '../../Api';
 
 //creates the animal PopUp
 
-const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop}) => {
-  
+const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, refugesData}) => {
+
+  const {
+    likeAnimal
+  } = useInfoData();
+
   const {
     name,
-    // refuge: {
-    //   name: refugeName,
-    //   address,
-    //   postal_code
-    // },
     image,
     description
   } = selectedAnimalPop
 
+  let currentUser = localStorage.getItem('currentUser')
+  currentUser = JSON.parse(currentUser)
+
+  const popIconHeart = ( <button onClick={()=> likeAnimal(currentUser.id, selectedAnimalPop.id) }><i className="fa-solid fa-heart"></i></button>)
+  const popIconDelete = (<div>Delete!</div>);
+  const notLogged = (<div></div>)
+  
   return (
     <div className="AnimalPopUp">
       <div className="AnimalPopUpInner">
@@ -28,12 +37,11 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop}) => {
             X button
           </button>
         </div>
-
-        <div className="RefugeInfo">
-          <h6>{name} currently await his furever home at:</h6>
-          {/* <div>{refugeName}</div>
-          <div>{address}</div>
-          <div>{postal_code}</div> */}
+        <div className='RefugeInfo'>
+         <h6>{name} currently await his furever home at:</h6> 
+          {/* <div>{refugeData.name}</div> */}
+          {/* <div>{address}</div>
+          <div>{postal_code}</div>  */}
         </div>
         <div className="AnimalPopImage">
           <img height="200px" width="200px" src={image} />
@@ -44,7 +52,7 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop}) => {
         </div>
         <div className="Buttons">
           <button>Get more info about {name}</button>
-          <button>Like Button</button>
+          {currentUser ? popIconHeart : notLogged}
         </div>
       </div>
     </div>

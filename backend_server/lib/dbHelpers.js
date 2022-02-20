@@ -108,6 +108,27 @@ const loginUser = (email, password) => {
   });
 };
 
+const matchRefugeById = (id) => {
+  const stringQuery = 'SELECT * FROM refuges WHERE id = $1;'
+  return db
+  .query(stringQuery, [id])
+  .then((data) => {
+    if(!data.rows[0]){
+      console.log("Couldn't find refuge")
+    } else {
+      return data.rows[0]
+    }
+  });
+};
+
+const addToFavorites = (userId, animalId) => {
+  const stringQuery = 'INSERT INTO favorites (user_id, animal_id) VALUES ($1, $2) RETURNING *;'
+  return db
+  .query(stringQuery, [userId, animalId])
+  .then((data) => {
+    return data.rows[0]
+  })
+}
 
 module.exports = {
   getUsers,
@@ -117,5 +138,7 @@ module.exports = {
   registerUser,
   loginUser,
   userExists,
-  emailPasswordMatch
+  emailPasswordMatch,
+  matchRefugeById,
+  addToFavorites
 }

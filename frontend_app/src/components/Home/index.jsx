@@ -2,28 +2,26 @@ import React, { useState, useEffect } from 'react';
 import Animal from '../Animal';
 import AnimalPopUp from '../AnimalPopUp';
 import "./Home.css"
-import useInfoData from '../../Api'; 
+import useInfoData from '../../Api';
 
 const Home = ({ name }) => {
 
   const {
-    getAnimalInfo
+    getAnimalInfo,
   } = useInfoData();
 
   let currentUser = localStorage.getItem('currentUser')
   currentUser = JSON.parse(currentUser)
-  console.log("this is current user post JSON.parse--->", currentUser)
 
 
    //this is to propagate my component (Animal Tile) with the needed data (from axios call to api/animals)
   const [selectedAnimalPop, setSelectedAnimalPop] = useState(false);
-  const [animalsData, setAnimalsData] = useState(null)
+  const [animalsData, setAnimalsData] = useState(null);
 
   useEffect(() => {
     (getAnimalInfo().then((animals) => {
       setAnimalsData(animals)
     }))
-    //console.log("this is animal data --->", animalsData);
   }, [setAnimalsData])
 
   if(animalsData === null) {

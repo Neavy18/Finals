@@ -2,7 +2,10 @@ import React from 'react';
 import './animalPopUp.css'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 import useInfoData from '../../Api';
+import LikeMsg from '../LikeMsg';
+import RequestMessage from '../RequestInfoMsg'
 
 //creates the animal PopUp
 
@@ -21,19 +24,29 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop}) => {
   let currentUser = localStorage.getItem('currentUser')
   currentUser = JSON.parse(currentUser)
 
-  const popIconHeart = ( <button onClick={()=> likeAnimal(currentUser.id, selectedAnimalPop.id) }><i className="fa-solid fa-heart"></i></button>)
-  const notLogged = (<div></div>)
+  let navigate = useNavigate();
+  
+  const loginReroute =() => {
+    navigate('/login')
+  }
+
+  const [likeMessage, setLikeMessage] = useState(false)
+  const [requestMessage, setRequestMessage] = useState(false)
+
+  const handleOnClick = () => {
+    likeAnimal(currentUser.id, selectedAnimalPop.id)
+    setLikeMessage(selectedAnimalPop.name)
+  } 
+  const popIconHeart = ( <button onClick={()=> handleOnClick() }><i className="fa-solid fa-heart"></i></button>)
+  const notLogged = (<button onClick={() => loginReroute()}>Login to like!</button>)
   
   return (
     <div className="AnimalPopUp">
       <div className="AnimalPopUpInner">
         <div className="PopUpHeader">
           <h3>A little more about me!</h3>
-          <button
-            className="close-btn"
-            onClick={() => setSelectedAnimalPop(false)}
-          >
-            X button
+          <button className="close-btn" onClick={() => setSelectedAnimalPop(false)}>
+            <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
         <div className='RefugeInfo'>
@@ -50,9 +63,15 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop}) => {
           <div>{description}</div>
         </div>
         <div className="Buttons">
-          <button>Get more info about {name}</button>
+          <button onClick = {() => setRequestMessage(selectedAnimalPop.name)}>Get more info about {name}</button>
           {currentUser ? popIconHeart : notLogged}
         </div>
+      </div>
+      <div>
+        {likeMessage && <LikeMsg likeMessage={likeMessage} setLikeMessage={setLikeMessage}/>}
+      </div>
+      <div>
+        {requestMessage && <RequestMessage requestMessage={requestMessage} setRequestMessage={setRequestMessage} />}
       </div>
     </div>
   ); 

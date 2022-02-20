@@ -35,7 +35,7 @@ const FavoritePopUp = ({selectedFavoritePop, setSelectedFavoritePop}) => {
           <button
             className="close-btn"
             onClick={() => setSelectedFavoritePop(false)}
-          >  <i class="fa-solid fa-circle-xmark"></i>
+          >  <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
         <div className='RefugeInfo'>

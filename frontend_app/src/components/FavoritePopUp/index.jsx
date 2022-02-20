@@ -1,12 +1,12 @@
 import React from 'react';
-import './animalPopUp.css'
+import './FavoritesPopUp.css'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import useInfoData from '../../Api';
 
 //creates the animal PopUp
 
-const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop}) => {
+const FavoritePopUp = ({selectedFavoritePop, setSelectedFavoritePop}) => {
 
   const {
     likeAnimal
@@ -16,12 +16,12 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop}) => {
     name,
     image,
     description
-  } = selectedAnimalPop
+  } = selectedFavoritePop
 
   let currentUser = localStorage.getItem('currentUser')
   currentUser = JSON.parse(currentUser)
 
-  const popIconHeart = ( <button onClick={()=> likeAnimal(currentUser.id, selectedAnimalPop.id) }><i className="fa-solid fa-heart"></i></button>)
+  const popIconDelete = (<div>Delete!</div>);
   const notLogged = (<div></div>)
   
   return (
@@ -31,9 +31,8 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop}) => {
           <h3>A little more about me!</h3>
           <button
             className="close-btn"
-            onClick={() => setSelectedAnimalPop(false)}
-          >
-            X button
+            onClick={() => setSelectedFavoritePop(false)}
+          >   X button
           </button>
         </div>
         <div className='RefugeInfo'>
@@ -51,11 +50,11 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop}) => {
         </div>
         <div className="Buttons">
           <button>Get more info about {name}</button>
-          {currentUser ? popIconHeart : notLogged}
+          <button><i className="fa-solid fa-x"></i></button>
         </div>
       </div>
     </div>
   ); 
 }
 
-export default AnimalPopUp;
+export default FavoritePopUp;

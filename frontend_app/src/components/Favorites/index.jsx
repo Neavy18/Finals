@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Animal from '../Animal';
 import AnimalPopUp from '../AnimalPopUp';
 import "./Favorites.css"
+import useInfoData from '../../Api';
 
 //the my favorites with a similar display as the homepage
 
@@ -99,19 +100,35 @@ import "./Favorites.css"
 // ]
 
 const Favorites = ({ name }) => {
+
+  const {
+    getFavorites
+  } = useInfoData();
   
-  const [selectedAnimal, setSelectedAnimal] = useState(false);
+  let currentUser = localStorage.getItem('currentUser')
+  currentUser = JSON.parse(currentUser)
+
+  const [selectedAnimalPop, setSelectedAnimalPop] = useState(false);
+  const [favoritesData, setFavoritesData] = useState(null);
+  
+  useEffect(() => {
+   (getFavorites(currentUser.id).then((favorites) => {
+     setFavoritesData(favorites)
+   }))
+  }, [setFavoritesData])
+
+  if(favoritesData === null){
+    return null
+  }
 
   return (
     <div>
       <h1 className='Slogan'>My favorites</h1>
-      {/* <div className='AnimalTiles'>
-        {ANIMALS.map(animal => (
-          <Animal animal={animal} setSelectedAnimal={setSelectedAnimal} />
+     <div className='AnimalTiles'>
+        {favoritesData.map(animal => (
+          <Animal animal={animal} />
         ))}
       </div>
-      <AnimalPopUp animal={selectedAnimal} setSelectedAnimal={setSelectedAnimal}>
-      </AnimalPopUp> */}
     </div>
   );
 }

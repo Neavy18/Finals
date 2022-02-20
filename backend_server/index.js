@@ -46,25 +46,24 @@ app.get('/api/favorites', (req, res) => {
   })
 })
 
-//api favorites for user
-app.get('/api/userfavorites', (req, res) => {
-  favoritesByUserId(2)
+// ------> POST REQUESTS <-------//
+
+app.post('/users/favorites', (req, res) => {
+  const user_Id = req.body.userId
+
+  favoritesByUserId(user_Id)
   .then((response) => {
-    res.json(response)
     const likedAnimalIdArr = [];
     response.map((likedAnimal) => {
       likedAnimalIdArr.push(likedAnimal.animal_id)
     })
    getFavoriteAnimalsByAnimalId(likedAnimalIdArr)
    .then((response) => {
-    
-
+    // console.log("this is response", response)
+    res.json(response)
    })  
   });
-});
-
-// ------> POST REQUESTS <-------//
-
+})
 //register user
 app.post('/register', (req, res) => {
 

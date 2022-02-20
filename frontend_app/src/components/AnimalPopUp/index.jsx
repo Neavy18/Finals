@@ -37,7 +37,7 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop}) => {
           </button>
         </div>
         <div className='RefugeInfo'>
-         <h6>{name} currently await his furever home at:</h6> 
+         <h6>{name} currently await their furever home at:</h6> 
           {/* <div>{refugeData.name}</div> */}
           {/* <div>{address}</div>
           <div>{postal_code}</div>  */}

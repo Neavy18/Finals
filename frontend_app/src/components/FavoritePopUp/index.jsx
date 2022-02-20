@@ -1,6 +1,7 @@
 import React from 'react';
 import './FavoritesPopUp.css'
 import axios from 'axios';
+import { Link , useNavigate} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import useInfoData from '../../Api';
 
@@ -8,10 +9,12 @@ import useInfoData from '../../Api';
 
 const FavoritePopUp = ({selectedFavoritePop, setSelectedFavoritePop}) => {
 
-  const {
-    likeAnimal
-  } = useInfoData();
+  let navigate = useNavigate()
 
+  const {
+    deleteFavorites
+  } = useInfoData();
+  
   const {
     name,
     image,
@@ -32,11 +35,11 @@ const FavoritePopUp = ({selectedFavoritePop, setSelectedFavoritePop}) => {
           <button
             className="close-btn"
             onClick={() => setSelectedFavoritePop(false)}
-          >   X button
+          >  <i class="fa-solid fa-circle-xmark"></i>
           </button>
         </div>
         <div className='RefugeInfo'>
-         <h6>{name} currently await his furever home at:</h6> 
+         <h6>{name} currently await their furever home at:</h6> 
           {/* <div>{refugeData.name}</div> */}
           {/* <div>{address}</div>
           <div>{postal_code}</div>  */}
@@ -50,7 +53,7 @@ const FavoritePopUp = ({selectedFavoritePop, setSelectedFavoritePop}) => {
         </div>
         <div className="Buttons">
           <button>Get more info about {name}</button>
-          <button><i className="fa-solid fa-x"></i></button>
+          <button onClick={() => deleteFavorites(currentUser.id, selectedFavoritePop.id)}><i class="fa-solid fa-circle-xmark"></i></button>
         </div>
       </div>
     </div>

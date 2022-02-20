@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = 5000;
 const cors = require('cors');
-const { getUsers, getRefuges, getAnimals, getFavorites, registerUser, loginUser, userExists, emailPasswordMatch, matchRefugeById, addToFavorites, favoritesByUserId, getFavoriteAnimalsByAnimalId } = require('./lib/dbHelpers');
+const { getUsers, getRefuges, getAnimals, getFavorites, registerUser, loginUser, userExists, emailPasswordMatch, matchRefugeById, addToFavorites, favoritesByUserId, getFavoriteAnimalsByAnimalId, deleteFavorites } = require('./lib/dbHelpers');
 const { response } = require('express');
 
 app.use(express.json());
@@ -114,6 +114,19 @@ app.post('/liked', (req, res) => {
     res.status(200).json(response)
   });
 });
+
+//delete favorite from database when delete button is clicked 
+
+app.post('/delete/favorites', (req, res) => {
+  const idUser = req.body.user_id;
+  const idAnimal = req.body.animal_id;
+
+  deleteFavorites(idUser, idAnimal)
+  .then((reponse) => {
+    console.log("should be response!!", response)
+    res.status(200).json(response)
+  })
+})
 
 app.listen(PORT, () => {
   console.log(`Server is listenning on PORT ${PORT}`);

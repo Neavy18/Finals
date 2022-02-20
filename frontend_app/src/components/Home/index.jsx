@@ -42,17 +42,25 @@ const Home = ({ name }) => {
    )}
  </div> )
 
-  const noUserLoggedDisplay = (<div>
-    <h1 className='Slogan'>FLOGIN</h1>
-   <div className='AnimalTiles'>
-     {animalsData.map(animal => (
-       <Animal animal={animal} setSelectedAnimalPop={setSelectedAnimalPop} />
-     ))}
-   </div>
-   {selectedAnimalPop && (
-     <AnimalPopUp selectedAnimalPop={selectedAnimalPop} setSelectedAnimalPop={setSelectedAnimalPop} />
-   )}
- </div> )
+  const noUserLoggedDisplay = (
+    <div className="container">
+      {/* <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4"> */}
+      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+        {/* <h1 className="Slogan">FLOGIN</h1> */}
+        {/* <div className="col"> */}
+        {animalsData.map((animal) => (
+          <Animal animal={animal} setSelectedAnimalPop={setSelectedAnimalPop} />
+        ))}
+        {/* </div> */}
+      </div>
+      {selectedAnimalPop && (
+        <AnimalPopUp
+          selectedAnimalPop={selectedAnimalPop}
+          setSelectedAnimalPop={setSelectedAnimalPop}
+        />
+      )}
+    </div>
+  );
  
   return (
     <div >

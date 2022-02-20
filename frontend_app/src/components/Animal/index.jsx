@@ -1,30 +1,18 @@
 import React from 'react';
-import './animal.css'
+import './animal.css';
 
 //creates the animal tiles
 
-const Animal = ({animal, setSelectedAnimalPop}) => {
+const Animal = ({ animal, setSelectedAnimalPop }) => {
+  const { image, name, age, breed, sex } = animal;
 
-  const {
-    image,
-    name,
-    age,
-    breed,
-    sex,
-  } = animal
-  
   return (
     <div className="col" onClick={() => setSelectedAnimalPop(animal)}>
       <div className="card text-center">
-        <img
-          src={image}
-          class="card-img-top"
-          alt="Animal"
-        />
+        <img src={image} class="card-img-top" alt="Animal" />
         <div className="card-body">
-          <p className="card-text">
-            {name}
-          </p>
+          <p className="card-text">{name}</p>
+          <p className="card-text">{age}</p>
         </div>
       </div>
       {/* <div className="AnimalImage">
@@ -41,7 +29,7 @@ const Animal = ({animal, setSelectedAnimalPop}) => {
         </div>
       </div>  */}
     </div>
-  ); 
-}
+  );
+};
 
 export default Animal;

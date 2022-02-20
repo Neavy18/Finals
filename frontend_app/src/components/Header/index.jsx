@@ -1,11 +1,18 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Link,  useLocation } from 'react-router-dom';
 import './Header.css';
 
 // display the header component
 
 const Header = () => {
+
+  const location  = useLocation();
+  console.log("this is location --->", location);
+
+  if(location.pathname  === "/") {
+    
+  }
 
   let history = useNavigate();
 

@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const PORT = 5000;
 const cors = require('cors');
-const { getUsers, getRefuges, getAnimals, getFavorites, registerUser, loginUser, userExists, emailPasswordMatch, } = require('./lib/dbHelpers');
+const { getUsers, getRefuges, getAnimals, getFavorites, registerUser, loginUser, userExists, emailPasswordMatch, matchRefugeById, addToFavorites } = require('./lib/dbHelpers');
+const { response } = require('express');
 
 app.use(express.json());
 app.use(cors());
@@ -55,7 +56,6 @@ app.post('/register', (req, res) => {
   const email = req.body.email
   const password = req.body.password
 
-
   userExists(email).then((exists) => {
     if(!exists){
       registerUser(firstName, lastName, email, password)
@@ -88,6 +88,16 @@ app.post('/login', (req, res) =>  {
   });
 });
 
+app.post('/liked', (req, res) => {
+  const idUser = req.body.user_id;
+  const idAnimal = req.body.animal_id;
+
+  addToFavorites(idUser, idAnimal)
+  .then((response) => {
+    res.status(200).json(response)
+  })
+
+})
 app.listen(PORT, () => {
   console.log(`Server is listenning on PORT ${PORT}`);
 })

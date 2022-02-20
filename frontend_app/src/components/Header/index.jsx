@@ -14,21 +14,25 @@ const Header = () => {
     
   }
 
-  let history = useNavigate();
+  let navigate = useNavigate();
 
   const logout = () => {
     localStorage.clear();
-    history('/login')
+    navigate('/login')
   }
   
   const login = () => {
-    history('/login')
+    navigate('/login')
+  }
+
+  const userFavorites = ()=> {
+    navigate('/favorites')
   }
   let currentUser = localStorage.getItem('currentUser')
   currentUser = JSON.parse(currentUser)
 
   const isLoggedIn = (  <div className='Header'>
-  <button><i className="fa-solid fa-user"></i></button>
+  <button onClick={() => userFavorites()}><i className="fa-solid fa-user"></i></button>
   <h2>Furever Home</h2>
   <button><i className="fa-solid fa-magnifying-glass-plus"></i></button>
   <button onClick={() => logout()}>Logout</button>

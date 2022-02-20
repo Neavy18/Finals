@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = 5000;
 const cors = require('cors');
-const { getUsers, getRefuges, getAnimals, getFavorites, registerUser, loginUser, userExists, emailPasswordMatch, matchRefugeById, addToFavorites } = require('./lib/dbHelpers');
+const { getUsers, getRefuges, getAnimals, getFavorites, registerUser, loginUser, userExists, emailPasswordMatch, matchRefugeById, addToFavorites, favoritesByUserId, getFavoriteAnimalsByAnimalId } = require('./lib/dbHelpers');
 const { response } = require('express');
 
 app.use(express.json());
@@ -46,6 +46,23 @@ app.get('/api/favorites', (req, res) => {
   })
 })
 
+//api favorites for user
+app.get('/api/userfavorites', (req, res) => {
+  favoritesByUserId(2)
+  .then((response) => {
+    res.json(response)
+    const likedAnimalIdArr = [];
+    response.map((likedAnimal) => {
+      likedAnimalIdArr.push(likedAnimal.animal_id)
+    })
+   getFavoriteAnimalsByAnimalId(likedAnimalIdArr)
+   .then((response) => {
+    
+
+   })  
+  });
+});
+
 // ------> POST REQUESTS <-------//
 
 //register user
@@ -88,6 +105,7 @@ app.post('/login', (req, res) =>  {
   });
 });
 
+//adds an animal to favorites dataabase when like button is clicked
 app.post('/liked', (req, res) => {
   const idUser = req.body.user_id;
   const idAnimal = req.body.animal_id;
@@ -95,9 +113,9 @@ app.post('/liked', (req, res) => {
   addToFavorites(idUser, idAnimal)
   .then((response) => {
     res.status(200).json(response)
-  })
+  });
+});
 
-})
 app.listen(PORT, () => {
   console.log(`Server is listenning on PORT ${PORT}`);
 })

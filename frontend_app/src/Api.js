@@ -9,7 +9,7 @@ const useInfoData = () => {
     .then((response) => {
       return response.data
     })
-  }
+  };
    
   const getRefugesInfo = () => {
     return axios.get('http://localhost:5000/api/refuges')
@@ -17,7 +17,7 @@ const useInfoData = () => {
       console.log("from inside the AXIOS GET of REFUGES---:>", res.data);
       return res.data
     })
-  }
+  };
 
   const likeAnimal = (userId, animalId) => {
     
@@ -30,11 +30,23 @@ const useInfoData = () => {
     .then((res) => {
       console.log("this is liked animals--->", res.data)
     })
+  };
+
+  const getFavorites = (userId) => {
+    const user_Id = {
+      userId: userId
+    }
+    return axios.post('http://localhost:5000/users/favorites', user_Id)
+    .then((res) => {
+      return res.data
+    })
   }
+
 
   return  {
     getAnimalInfo,
-    likeAnimal
+    likeAnimal,
+    getFavorites
   }
 }
 

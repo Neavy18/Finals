@@ -11,15 +11,6 @@ const useInfoData = () => {
     })
   }
    
-  // const getRefugeByID = (animalObject) => {
-  //   console.log("inside the getRefugeByID func ---->", animalObject);
-  //   return axios.post("http://localhost:5000/refuge", animalObject)
-  //   .then((res) => {
-  //     console.log("this is res.data --->", res.data)
-  //    return res.data
-  //   })
-  // };
-
   const getRefugesInfo = () => {
     return axios.get('http://localhost:5000/api/refuges')
     .then((res) => {
@@ -43,7 +34,6 @@ const useInfoData = () => {
 
   return  {
     getAnimalInfo,
-    getRefugesInfo,
     likeAnimal
   }
 }

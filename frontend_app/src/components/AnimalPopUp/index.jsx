@@ -21,24 +21,6 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, refugesData}) => 
   let currentUser = localStorage.getItem('currentUser')
   currentUser = JSON.parse(currentUser)
 
-  // const getRefugeById = (animal, refugesList) => {
-  //   refugesList.map((refuge) => {
-  //     if (animal.refuge_id === refuge.id) {
-  //       console.log("this is inside the function ---->", refuge);
-  //       return refuge
-  //     }
-  //   })
-  // }
-  // let selectedRefuge = getRefugeById(selectedAnimalPop, refugesData)
-  
-  // const {
-  //   address,
-  //   city,
-  //   postal_code
-  // } = selectedRefuge
-
-  //console.log('this is current user --->', currentUser)
-  //console.log('this is animalpop up id --->,', selectedAnimalPop.id)
   const popIconHeart = ( <button onClick={()=> likeAnimal(currentUser.id, selectedAnimalPop.id) }><i className="fa-solid fa-heart"></i></button>)
   const popIconDelete = (<div>Delete!</div>);
   const notLogged = (<div></div>)

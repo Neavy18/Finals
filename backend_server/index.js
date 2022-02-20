@@ -88,14 +88,6 @@ app.post('/login', (req, res) =>  {
   });
 });
 
-app.post('/refuge', (req, res) => {
-  const id = req.body.refuge_id
-  matchRefugeById(id)
-  .then((response) => {
-    res.status(200).json(response)
-  });
-});
-
 app.post('/liked', (req, res) => {
   const idUser = req.body.user_id;
   const idAnimal = req.body.animal_id;

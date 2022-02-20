@@ -1,16 +1,16 @@
 import React from 'react';
-import './animal.css'
+import './FavoriteAnimal.css'
 import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-//creates the animal tiles
+//creates the favorite animal tiles
 
-const Animal = ({ animal, setSelectedAnimalPop }) => {
-  const { image, name, age, breed, sex } = animal;
+const FavoriteAnimal = ({ favorite, setSelectedFavoritePop }) => {
+  const { image, name, age, breed, sex } = favorite;
 
   return (
-    <div className="col" onClick={() => setSelectedAnimalPop(animal) }>
+    <div className="col" onClick={() => setSelectedFavoritePop(favorite) }>
       <div className="card text-center">
         <img src={image} class="card-img-top" alt="Animal" />
         <div className="card-body">
@@ -35,4 +35,4 @@ const Animal = ({ animal, setSelectedAnimalPop }) => {
   );
 };
 
-export default Animal;
+export default FavoriteAnimal;

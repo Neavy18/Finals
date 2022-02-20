@@ -17,10 +17,8 @@ const Animal = ({animal, setSelectedAnimalPop}) => {
   } = animal
   
   return (
-    <div className='AnimalTile' onClick={() => {
-      setSelectedAnimalPop(animal)
-    }}>
-      <div className='AnimalImage'><img src={image}/></div>
+    <div className='AnimalTile' onClick={() => setSelectedAnimalPop(animal)}>
+      <div className='AnimalImage'><img height="200px" width="200px" src={image}/></div>
       <div className='AnimalInfo'>
         <div className='AnimalNameAge'>
           <div>{name}</div>

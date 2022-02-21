@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Animal from '../Animal';
 import AnimalPopUp from '../AnimalPopUp';
-import "./Home.css"
+import "./Home.css";
 import useInfoData from '../../Api';
+import LikeMsg from '../LikeMsg';
 
 const Home = ({ name }) => {
 
@@ -17,6 +18,13 @@ const Home = ({ name }) => {
    //this is to propagate my component (Animal Tile) with the needed data (from axios call to api/animals)
   const [selectedAnimalPop, setSelectedAnimalPop] = useState(false);
   const [animalsData, setAnimalsData] = useState(null);
+
+  const [showLikeMessage, setShowLikeMessage] = useState(false);
+  const [likeMessage, setLikeMessage] = useState(null);
+  
+  const [showRequestMessage, setShowRequestMessage] = useState(false);
+  const [requestMessage, setRequestMessage] = useState(null);
+
 
   useEffect(() => {
     (getAnimalInfo().then((animals) => {
@@ -36,9 +44,20 @@ const Home = ({ name }) => {
      ))}
    </div>
    {selectedAnimalPop && (
-     <AnimalPopUp selectedAnimalPop={selectedAnimalPop} setSelectedAnimalPop={setSelectedAnimalPop} />
+     <AnimalPopUp 
+      selectedAnimalPop={selectedAnimalPop} 
+      setSelectedAnimalPop={setSelectedAnimalPop} 
+      setLikeMessage={setLikeMessage}
+      setShowLikeMessage={setShowLikeMessage}
+     />
    )}
- </div> )
+   {showLikeMessage && (
+     <LikeMsg 
+      likeMessage={likeMessage} 
+      setShowLikeMessage={setShowLikeMessage} 
+      />
+  )}
+  </div>)
 
   const noUserLoggedDisplay = (
     <div className="container">

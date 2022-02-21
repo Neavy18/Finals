@@ -10,10 +10,6 @@ const Header = () => {
   const location  = useLocation();
   console.log("this is location --->", location);
 
-  if(location.pathname  === "/") {
-    
-  }
-
   let navigate = useNavigate();
 
   const logout = () => {
@@ -28,18 +24,28 @@ const Header = () => {
   const userFavorites = ()=> {
     navigate('/favorites')
   }
+
+  const home = ()=> {
+    navigate('/')
+  }
+
   let currentUser = localStorage.getItem('currentUser')
   currentUser = JSON.parse(currentUser)
 
   const isLoggedIn = (  <div className='Header'>
-  <button onClick={() => userFavorites()}><i className="fa-solid fa-user"></i></button>
+    {location.pathname === '/favorites' 
+      ? (
+    <button onClick={() => home()}><i className="fa-solid fa-magnifying-glass-plus"></i></button>
+      ) :  (<button onClick={() => userFavorites()}><i className="fa-solid fa-user"></i></button>)
+    };
+  
   <h2>Furever Home</h2>
   <button><i className="fa-solid fa-magnifying-glass-plus"></i></button>
   <button onClick={() => logout()}>Logout</button>
   </div>);
 
   const isNotLoggedIn = (  <div className='Header'>
-  <button onClick={() => login()}>Login</button>
+  {location.pathname !== '/login' && <button onClick={() => login()}>Login</button>}
   <h2>Furever Home</h2>
   <button><i className="fa-solid fa-magnifying-glass-plus"></i></button>
   <div>

@@ -6,10 +6,11 @@ import { useNavigate } from 'react-router';
 import useInfoData from '../../Api';
 import LikeMsg from '../LikeMsg';
 import RequestMessage from '../RequestInfoMsg'
+import { Link, Linkn } from 'react-router-dom';
 
 //creates the animal PopUp
 
-const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop}) => {
+const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, setShowLikeMessage, setLikeMessage, setRequestMessage, setShowRequestMessage}) => {
 
   const {
     likeAnimal
@@ -28,17 +29,18 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop}) => {
   
   const loginReroute =() => {
     navigate('/login')
-  }
-
-  const [likeMessage, setLikeMessage] = useState(false)
-  const [requestMessage, setRequestMessage] = useState(false)
+  } 
 
   const handleOnClick = () => {
     likeAnimal(currentUser.id, selectedAnimalPop.id)
-    setLikeMessage(selectedAnimalPop.name)
-  } 
+    setLikeMessage(selectedAnimalPop.name) /* setLikeMessage({name: selectedAnimalPop.name  shelterName: se...}) */
+    setShowLikeMessage(true)
+    setSelectedAnimalPop(false)
+  }
   const popIconHeart = ( <button onClick={()=> handleOnClick() }><i className="fa-solid fa-heart"></i></button>)
-  const notLogged = (<button onClick={() => loginReroute()}>Login to like!</button>)
+  const notLogged = (<div><Link to='/login'> Login </Link> or <Link to='/register'>Register </Link><span>to like or request more info about {name}</span> </div>)
+  const requestMoreInfo = (<button onClick = {() => setRequestMessage(selectedAnimalPop.name)}>Contact the shelter about {name}</button>)
+  const empty = (<div></div>)
   
   return (
     <div className="AnimalPopUp">
@@ -63,15 +65,9 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop}) => {
           <div>{description}</div>
         </div>
         <div className="Buttons">
-          <button onClick = {() => setRequestMessage(selectedAnimalPop.name)}>Get more info about {name}</button>
+          {currentUser ? requestMoreInfo : empty }
           {currentUser ? popIconHeart : notLogged}
         </div>
-      </div>
-      <div>
-        {likeMessage && <LikeMsg likeMessage={likeMessage} setLikeMessage={setLikeMessage}/>}
-      </div>
-      <div>
-        {requestMessage && <RequestMessage requestMessage={requestMessage} setRequestMessage={setRequestMessage} />}
       </div>
     </div>
   ); 

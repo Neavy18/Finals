@@ -1,11 +1,12 @@
 INSERT INTO animals(refuge_id, specie, name, age, sex, breed, description, image) VALUES 
-(1, 'dog', 'Luna', '2 years old', 'Female', 'Siberian Husky', 'This young lady will need a family that can match her high level of energy and will be willing to pay a lot of attention to the many requests she will very vocally emit. Her ideal home would have a yard and, possibly, some other canine companions. Any prior experience with huskies would be a plus!', '/images/luna-siberian-husky-adult.jpg');
+(1, 'dog', 'Luna', '2 years old', 'Female', 'Siberian Husky', 'Cute little lady who loves nothing more than to get pet looking for her furever home
+', '/images/luna-siberian-husky-adult.jpg');
 
 INSERT INTO animals(refuge_id, specie, name, age, sex, breed, description, image) VALUES 
 (2, 'cat', 'Oreo', '4 months old', 'Male', 'Short haired', 'Cute oreo coloured kitten looking for his furever home', '/images/oreo-black-white-kitten.jpg');
 
 INSERT INTO animals(refuge_id, specie, name, age, sex, breed, description, image) VALUES 
-(1, 'dog', 'Daisy', '2 years old', 'Female', 'Cavalier King Charles Spaniel', 'Cute little lady who loves nothing more than to get pet looking for her furever home', '/images/daisy-cavalier-king-charles-spaniel-adult.jpg');
+(1, 'dog', 'Daisy', '2 years old', 'Female', 'Cavalier King', 'Cute little lady who loves nothing more than to get pet looking for her furever home', '/images/daisy-cavalier-king-charles-spaniel-adult.jpg');
 
 INSERT INTO animals(refuge_id, specie, name, age, sex, breed, description, image) VALUES 
 (2, 'cat', 'Simba', '8 years old', 'Male', 'Short-Haired', 'Cute and fierce little orange and grey kitten at heart looking for his furever home', '/images/simba-orange-gray.jpg');

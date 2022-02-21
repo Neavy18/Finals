@@ -23,26 +23,26 @@
   width: 55%;
   margin-top: 5rem;
   height: 450px;
-  border-radius: 45%;
+  background-color: lightgray;
+  border-radius: 15%;
 }
 
 .PopUpHeader {
   width: 95%;
-  display: flex;
-  justify-content: space-between;
+  /* display: flex;
+  justify-content: space-between; */
   padding-top: 0.75rem;
-  
+  text-align: center;
 }
 
-.close-btn {
+.btn-close {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 30px;
+  right: 50px;
 }
 
 .AnimalPopImage {
-  border-top: 3px solid;
-  border-bottom:3px solid;
+  
   width:80%;
   height:200px;
   display: flex;

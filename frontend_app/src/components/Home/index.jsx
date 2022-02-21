@@ -7,16 +7,12 @@ import LikeMsg from '../LikeMsg';
 import RequestInfoMsg from '../RequestInfoMsg' 
 
 const Home = ({ name }) => {
+  const { getAnimalInfo } = useInfoData();
 
-  const {
-    getAnimalInfo,
-  } = useInfoData();
+  let currentUser = localStorage.getItem('currentUser');
+  currentUser = JSON.parse(currentUser);
 
-  let currentUser = localStorage.getItem('currentUser')
-  currentUser = JSON.parse(currentUser)
-
-
-   //this is to propagate my component (Animal Tile) with the needed data (from axios call to api/animals)
+  //this is to propagate my component (Animal Tile) with the needed data (from axios call to api/animals)
   const [selectedAnimalPop, setSelectedAnimalPop] = useState(false);
   const [animalsData, setAnimalsData] = useState(null);
 
@@ -28,25 +24,29 @@ const Home = ({ name }) => {
 
 
   useEffect(() => {
-    (getAnimalInfo().then((animals) => {
-      setAnimalsData(animals)
-    }))
-  }, [setAnimalsData])
+    getAnimalInfo().then((animals) => {
+      setAnimalsData(animals);
+    });
+  }, [setAnimalsData]);
 
-  if(animalsData === null) {
-    return null
+  if (animalsData === null) {
+    return null;
   }
 
   const userLoggedDisplay = ( <div>
-    <h1 className='Slogan'>Find your Soulmate</h1>
-    <div className='AnimalTiles'>
+    <section className='Slogan'>
+        <h1>Find your Soulmate</h1>
+      </section>
+      <div className="container">
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3">
       {animalsData.map(animal => (
         <Animal 
           animal={animal} 
           setSelectedAnimalPop={setSelectedAnimalPop} 
         />
       ))}
-    </div>
+        </div>
+      </div>
     {selectedAnimalPop && (
       <AnimalPopUp 
         selectedAnimalPop={selectedAnimalPop} 
@@ -72,24 +72,27 @@ const Home = ({ name }) => {
     </div>)
 
     const noUserLoggedDisplay = (
+      <>
+      <section className="Slogan">
+        <h1>Find your Soulmate</h1>
+      </section>
       <div className="container">
         {/* <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4"> */}
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3">
-          {/* <h1 className="Slogan">FLOGIN</h1> */}
-          {/* <div className="col"> */}
+          {/* <h1 className="Slogan">LOGIN</h1> */}
           {animalsData.map((animal) => (
             <Animal animal={animal} setSelectedAnimalPop={setSelectedAnimalPop} />
           ))}
           {/* </div> */}
         </div>
+      </div>
         {selectedAnimalPop && (
           <AnimalPopUp
             selectedAnimalPop={selectedAnimalPop}
             setSelectedAnimalPop={setSelectedAnimalPop}
           />
         )}
-      </div>
-    );
+      </>)
   
     return (
       <div >

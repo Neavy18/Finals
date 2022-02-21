@@ -42,9 +42,9 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, setShowLikeMessag
     setShowRequestMessage(true)
     setSelectedAnimalPop(false)
   }
-  const popIconHeart = ( <button onClick={()=> handleOnClickLike() }><i className="fa-solid fa-heart"></i></button>)
+  const popIconHeart = ( <button type="button" className="btn btn-info" onClick={()=> handleOnClickLike() }>Like ❤️</button>)
   const notLogged = (<div><Link to='/login'> Login </Link> or <Link to='/register'>Register </Link><span>to like or request more info about {name}</span> </div>)
-  const requestMoreInfo = (<button onClick = {() => handleOnClickRequest()}>Contact the shelter about {name}</button>)
+  const requestMoreInfo = (<button type="button" className="btn btn-info" onClick = {() => handleOnClickRequest()}>Contact the shelter about {name}</button>)
   const empty = (<div></div>)
   
   return (
@@ -52,12 +52,15 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, setShowLikeMessag
       <div className="AnimalPopUpInner">
         <div className="PopUpHeader">
           <h3>A little more about me!</h3>
-          <button className="close-btn" onClick={() => setSelectedAnimalPop(false)}>
-            <i class="fa-solid fa-xmark"></i>
+          <button
+            className="btn btn-close"
+            onClick={() => setSelectedAnimalPop(false)}
+          >
+            Close
           </button>
         </div>
-        <div className='RefugeInfo'>
-         <h6>{name} currently await their furever home at:</h6> 
+        <div className="RefugeInfo">
+          <h6>{name} currently await his furever home at:</h6>
           {/* <div>{refugeData.name}</div> */}
           {/* <div>{address}</div>
           <div>{postal_code}</div>  */}

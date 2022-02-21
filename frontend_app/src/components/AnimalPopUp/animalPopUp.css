@@ -23,8 +23,7 @@
   width: 55%;
   margin-top: 5rem;
   height: 450px;
-  background-color: white;
-  border-radius: 15%;
+  border-radius: 45%;
 }
 
 .PopUpHeader {
@@ -32,6 +31,7 @@
   display: flex;
   justify-content: space-between;
   padding-top: 0.75rem;
+  
 }
 
 .close-btn {

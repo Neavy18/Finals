@@ -35,24 +35,24 @@ const Header = () => {
   const isLoggedIn = (  <div className='Header'>
     {location.pathname === '/favorites' 
       ? (
-    <button onClick={() => home()}><i className="fa-solid fa-magnifying-glass-plus"></i></button>
+    <button onClick={() => home()}><i class="fa-solid fa-house"></i></button>
       ) :  (<button onClick={() => userFavorites()}><i className="fa-solid fa-user"></i></button>)
-    };
+    }
   
   <h2>Furever Home</h2>
   <button><i className="fa-solid fa-magnifying-glass-plus"></i></button>
   <button onClick={() => logout()}>Logout</button>
-  </div>);
+  </div>)
 
   const isNotLoggedIn = (  <div className='Header'>
-  {location.pathname !== '/login' && <button onClick={() => login()}>Login</button>}
+  {location.pathname !== '/login' && location.pathname !== '/register' && <button onClick={() => login()}>Login</button>}
   <h2>Furever Home</h2>
-  <button><i className="fa-solid fa-magnifying-glass-plus"></i></button>
+  {location.pathname !== '/login' && location.pathname !== '/register' && <button><i className="fa-solid fa-magnifying-glass-plus"></i></button>}
   <div>
-    <div>Not a member yet?</div>
-    <Link to='/register'>Register!</Link>
+  {location.pathname !== '/login' && location.pathname !== '/register' && <div>Not a member yet?</div>}
+  {location.pathname !== '/login' && location.pathname !== '/register' && <Link to='/register'>Register!</Link>}
   </div>
-</div>);
+</div>)
 
   return (
   <div>

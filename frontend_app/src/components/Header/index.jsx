@@ -35,13 +35,20 @@ const Header = () => {
   const isLoggedIn = (  <div className='Header'>
     {location.pathname === '/favorites' 
       ? (
-    <button onClick={() => home()}><i class="fa-solid fa-house"></i></button>
-      ) :  (<button onClick={() => userFavorites()}><i className="fa-solid fa-user"></i></button>)
+    <button type="button" class="btn btn-outline-info" onClick={() => home()}><i class="fa-solid fa-house"></i></button>
+      ) :  (<button type="button" class="btn btn-outline-info" onClick={() => userFavorites()}><i className="fa-solid fa-user"></i></button>)
     }
+  <div className='Header'>
+    <div className='Title'><strong>Furever Home </strong></div>
+    <div className='Icon'><i class="fa-solid fa-paw"></i></div>
+  </div>
   
-  <h2>Furever Home</h2>
-  <button><i className="fa-solid fa-magnifying-glass-plus"></i></button>
-  <button onClick={() => logout()}>Logout</button>
+  <div className='Left'>
+    <button type="button" className="btn btn-outline-info"><i className="fa-solid fa-magnifying-glass-plus"></i></button>
+    <br></br>
+    <button type="button" className="btn btn-outline-info" onClick={() => logout()}>Logout</button>
+  </div>
+
   </div>)
 
   const isNotLoggedIn = (  <div className='Header'>

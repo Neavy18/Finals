@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link , useNavigate} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import useInfoData from '../../Api';
+import RequestMessage from '../RequestInfoMsg'
 
 //creates the animal PopUp
 
@@ -26,6 +27,8 @@ const FavoritePopUp = ({selectedFavoritePop, setSelectedFavoritePop}) => {
 
   const popIconDelete = (<div>Delete!</div>);
   const notLogged = (<div></div>)
+ 
+  const [requestMessage, setRequestMessage] = useState(false)
   
   return (
     <div className="AnimalPopUp">
@@ -52,9 +55,12 @@ const FavoritePopUp = ({selectedFavoritePop, setSelectedFavoritePop}) => {
           <div>{description}</div>
         </div>
         <div className="Buttons">
-          <button>Get more info about {name}</button>
+        <button onClick = {() => setRequestMessage(selectedFavoritePop.name)}>Contact the shelter about {name}</button>
           <button onClick={() => deleteFavorites(currentUser.id, selectedFavoritePop.id)}><i class="fa-solid fa-circle-xmark"></i></button>
         </div>
+        <div>
+        {requestMessage && <RequestMessage requestMessage={requestMessage} setRequestMessage={setRequestMessage} />}
+      </div>
       </div>
     </div>
   ); 

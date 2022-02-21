@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router';
 import useInfoData from '../../Api';
 import LikeMsg from '../LikeMsg';
 import RequestMessage from '../RequestInfoMsg'
-import { Link, Linkn } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 //creates the animal PopUp
 
@@ -31,15 +31,20 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, setShowLikeMessag
     navigate('/login')
   } 
 
-  const handleOnClick = () => {
+  const handleOnClickLike = () => {
     likeAnimal(currentUser.id, selectedAnimalPop.id)
     setLikeMessage(selectedAnimalPop.name) /* setLikeMessage({name: selectedAnimalPop.name  shelterName: se...}) */
     setShowLikeMessage(true)
     setSelectedAnimalPop(false)
   }
-  const popIconHeart = ( <button onClick={()=> handleOnClick() }><i className="fa-solid fa-heart"></i></button>)
+  const handleOnClickRequest = () => {
+    setRequestMessage(selectedAnimalPop.name) /* setLikeMessage({name: selectedAnimalPop.name  shelterName: se...}) */
+    setShowRequestMessage(true)
+    setSelectedAnimalPop(false)
+  }
+  const popIconHeart = ( <button onClick={()=> handleOnClickLike() }><i className="fa-solid fa-heart"></i></button>)
   const notLogged = (<div><Link to='/login'> Login </Link> or <Link to='/register'>Register </Link><span>to like or request more info about {name}</span> </div>)
-  const requestMoreInfo = (<button onClick = {() => setRequestMessage(selectedAnimalPop.name)}>Contact the shelter about {name}</button>)
+  const requestMoreInfo = (<button onClick = {() => handleOnClickRequest()}>Contact the shelter about {name}</button>)
   const empty = (<div></div>)
   
   return (

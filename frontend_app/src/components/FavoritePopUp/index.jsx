@@ -8,7 +8,7 @@ import RequestMessage from '../RequestInfoMsg'
 
 //creates the animal PopUp
 
-const FavoritePopUp = ({selectedFavoritePop, setSelectedFavoritePop}) => {
+const FavoritePopUp = ({selectedFavoritePop, setSelectedFavoritePop, setRequestMessage, setShowRequestMessage}) => {
 
   let navigate = useNavigate()
 
@@ -28,8 +28,13 @@ const FavoritePopUp = ({selectedFavoritePop, setSelectedFavoritePop}) => {
   const popIconDelete = (<div>Delete!</div>);
   const notLogged = (<div></div>)
  
-  const [requestMessage, setRequestMessage] = useState(false)
   
+  const handleOnClickRequest = () => {
+    setRequestMessage(selectedFavoritePop.name) /* setLikeMessage({name: selectedAnimalPop.name  shelterName: se...}) */
+    setShowRequestMessage(true)
+    setSelectedFavoritePop(false)
+  }
+
   return (
     <div className="AnimalPopUp">
       <div className="AnimalPopUpInner">
@@ -55,12 +60,9 @@ const FavoritePopUp = ({selectedFavoritePop, setSelectedFavoritePop}) => {
           <div>{description}</div>
         </div>
         <div className="Buttons">
-        <button onClick = {() => setRequestMessage(selectedFavoritePop.name)}>Contact the shelter about {name}</button>
+        <button onClick = {() => handleOnClickRequest()}>Contact the shelter about {name}</button>
           <button onClick={() => deleteFavorites(currentUser.id, selectedFavoritePop.id)}><i class="fa-solid fa-circle-xmark"></i></button>
         </div>
-        <div>
-        {requestMessage && <RequestMessage requestMessage={requestMessage} setRequestMessage={setRequestMessage} />}
-      </div>
       </div>
     </div>
   ); 

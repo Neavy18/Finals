@@ -25,12 +25,12 @@ const Layout = ({ children }) => {
   // console.log('this is header! ', header)
   // console.log("loc.path", location.pathname)
     return (
-      <div>
+      <>
         { <Header />}
         <Container>
           {children}
         </Container>
-      </div>
+      </>
     );
 }
 

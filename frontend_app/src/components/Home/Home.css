@@ -5,6 +5,16 @@
 }
 
 .Slogan {
+  text-align: center;
   padding-top: 1.5rem;
   padding-bottom: 2rem;
+}
+
+.container {
+  width: 80%;
+}
+
+body {
+  background-color: lightsteelblue;
+  font-family: 'Akaya Telivigala', cursive;
 }

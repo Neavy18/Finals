@@ -21,7 +21,7 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, refugesData}) => 
   let currentUser = localStorage.getItem('currentUser')
   currentUser = JSON.parse(currentUser)
 
-  const popIconHeart = ( <button onClick={()=> likeAnimal(currentUser.id, selectedAnimalPop.id) }><i className="fa-solid fa-heart"></i></button>)
+  const popIconHeart = ( <button type="button" className="btn btn-info" onClick={()=> likeAnimal(currentUser.id, selectedAnimalPop.id) }>Like ❤️</button>)
   const popIconDelete = (<div>Delete!</div>);
   const notLogged = (<div></div>)
   
@@ -31,14 +31,14 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, refugesData}) => 
         <div className="PopUpHeader">
           <h3>A little more about me!</h3>
           <button
-            className="close-btn"
+            className="btn btn-close"
             onClick={() => setSelectedAnimalPop(false)}
           >
-            X button
+            Close
           </button>
         </div>
-        <div className='RefugeInfo'>
-         <h6>{name} currently await his furever home at:</h6> 
+        <div className="RefugeInfo">
+          <h6>{name} currently await his furever home at:</h6>
           {/* <div>{refugeData.name}</div> */}
           {/* <div>{address}</div>
           <div>{postal_code}</div>  */}
@@ -51,7 +51,9 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, refugesData}) => 
           <div>{description}</div>
         </div>
         <div className="Buttons">
-          <button>Get more info about {name}</button>
+          <button type="button" class="btn btn-info">
+            Request More Info
+          </button>
           {currentUser ? popIconHeart : notLogged}
         </div>
       </div>

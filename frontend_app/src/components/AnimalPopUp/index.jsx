@@ -2,11 +2,15 @@ import React from 'react';
 import './animalPopUp.css'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 import useInfoData from '../../Api';
+import LikeMsg from '../LikeMsg';
+import RequestMessage from '../RequestInfoMsg'
+import { Link } from 'react-router-dom';
 
 //creates the animal PopUp
 
-const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, refugesData}) => {
+const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, setShowLikeMessage, setLikeMessage, setRequestMessage, setShowRequestMessage}) => {
 
   const {
     likeAnimal
@@ -21,9 +25,27 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, refugesData}) => 
   let currentUser = localStorage.getItem('currentUser')
   currentUser = JSON.parse(currentUser)
 
-  const popIconHeart = ( <button type="button" className="btn btn-info" onClick={()=> likeAnimal(currentUser.id, selectedAnimalPop.id) }>Like ❤️</button>)
-  const popIconDelete = (<div>Delete!</div>);
-  const notLogged = (<div></div>)
+  let navigate = useNavigate();
+  
+  const loginReroute =() => {
+    navigate('/login')
+  } 
+
+  const handleOnClickLike = () => {
+    likeAnimal(currentUser.id, selectedAnimalPop.id)
+    setLikeMessage(selectedAnimalPop.name) /* setLikeMessage({name: selectedAnimalPop.name  shelterName: se...}) */
+    setShowLikeMessage(true)
+    setSelectedAnimalPop(false)
+  }
+  const handleOnClickRequest = () => {
+    setRequestMessage(selectedAnimalPop.name) /* setLikeMessage({name: selectedAnimalPop.name  shelterName: se...}) */
+    setShowRequestMessage(true)
+    setSelectedAnimalPop(false)
+  }
+  const popIconHeart = ( <button type="button" className="btn btn-info" onClick={()=> handleOnClickLike() }>Like ❤️</button>)
+  const notLogged = (<div><Link to='/login'> Login </Link> or <Link to='/register'>Register </Link><span>to like or request more info about {name}</span> </div>)
+  const requestMoreInfo = (<button type="button" className="btn btn-info" onClick = {() => handleOnClickRequest()}>Contact the shelter about {name}</button>)
+  const empty = (<div></div>)
   
   return (
     <div className="AnimalPopUp">
@@ -51,9 +73,7 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, refugesData}) => 
           <div>{description}</div>
         </div>
         <div className="Buttons">
-          <button type="button" class="btn btn-info">
-            Request More Info
-          </button>
+          {currentUser ? requestMoreInfo : empty }
           {currentUser ? popIconHeart : notLogged}
         </div>
       </div>

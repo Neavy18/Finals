@@ -10,39 +10,56 @@ const Header = () => {
   const location  = useLocation();
   console.log("this is location --->", location);
 
-  if(location.pathname  === "/") {
-    
-  }
-
-  let history = useNavigate();
+  let navigate = useNavigate();
 
   const logout = () => {
     localStorage.clear();
-    history('/login')
+    navigate('/login')
   }
   
   const login = () => {
-    history('/login')
+    navigate('/login')
   }
+
+  const userFavorites = ()=> {
+    navigate('/favorites')
+  }
+
+  const home = ()=> {
+    navigate('/')
+  }
+
   let currentUser = localStorage.getItem('currentUser')
   currentUser = JSON.parse(currentUser)
 
   const isLoggedIn = (  <div className='Header'>
-  <button><i className="fa-solid fa-user"></i></button>
-  <h2>Furever Home</h2>
-  <button><i className="fa-solid fa-magnifying-glass-plus"></i></button>
-  <button onClick={() => logout()}>Logout</button>
-  </div>);
+    {location.pathname === '/favorites' 
+      ? (
+    <button type="button" class="btn btn-outline-info" onClick={() => home()}><i class="fa-solid fa-house"></i></button>
+      ) :  (<button type="button" class="btn btn-outline-info" onClick={() => userFavorites()}><i className="fa-solid fa-user"></i></button>)
+    }
+  <div className='Header'>
+    <div className='Title'><strong>Furever Home </strong></div>
+    <div className='Icon'><i class="fa-solid fa-paw"></i></div>
+  </div>
+  
+  <div className='Left'>
+    <button type="button" className="btn btn-outline-info"><i className="fa-solid fa-magnifying-glass-plus"></i></button>
+    <br></br>
+    <button type="button" className="btn btn-outline-info" onClick={() => logout()}>Logout</button>
+  </div>
+
+  </div>)
 
   const isNotLoggedIn = (  <div className='Header'>
-  <button onClick={() => login()}>Login</button>
+  {location.pathname !== '/login' && location.pathname !== '/register' && <button onClick={() => login()}>Login</button>}
   <h2>Furever Home</h2>
-  <button><i className="fa-solid fa-magnifying-glass-plus"></i></button>
+  {location.pathname !== '/login' && location.pathname !== '/register' && <button><i className="fa-solid fa-magnifying-glass-plus"></i></button>}
   <div>
-    <div>Not a member yet?</div>
-    <Link to='/register'>Register!</Link>
+  {location.pathname !== '/login' && location.pathname !== '/register' && <div>Not a member yet?</div>}
+  {location.pathname !== '/login' && location.pathname !== '/register' && <Link to='/register'>Register!</Link>}
   </div>
-</div>);
+</div>)
 
   return (
   <div>

@@ -53,7 +53,7 @@ const Register = (props) => {
       <br></br>
       <button type="submit" onClick={() => registerUser(user)}>Register</button>
     </form> 
-    <h4>Already a user yet? <Link to="/">Login!</Link></h4>
+    <h4>Already a user yet? <Link to="/login">Login!</Link></h4>
   </div>
   )
   const alreadyLoggedInDisplay = (

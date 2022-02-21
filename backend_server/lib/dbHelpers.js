@@ -127,6 +127,47 @@ const addToFavorites = (userId, animalId) => {
   .query(stringQuery, [userId, animalId])
   .then((data) => {
     return data.rows[0]
+  });
+};
+
+const favoritesByUserId = (userId) => {
+  const stringQuery = 'SELECT * FROM favorites WHERE user_id = $1;'
+  return db
+  .query(stringQuery, [userId])
+  .then((data) => {
+    return data.rows
+  });
+};
+
+
+const getFavoriteAnimalsByAnimalId = (animalArray) => {
+
+  const startQuery = 'SELECT * FROM animals WHERE id = '
+  let newQuery = []
+  newQuery.push(startQuery)
+
+  animalArray.map((animalId) => {
+    newQuery.push(animalId)
+    newQuery.push(' OR id = ')
+  })
+
+  newQuery.pop();
+  newQuery.push(';');
+  const stringQuery = newQuery.join('')
+
+  return db.query(stringQuery)
+  .then((data) => {
+    return data.rows
+  });
+};
+
+const deleteFavorites = (userId, animalId) => {
+  const stringQuery = 'DELETE FROM favorites WHERE user_id = $1 AND animal_id = $2;'
+  return db
+  .query(stringQuery, [userId, animalId])
+  .then(() => {
+    const bye = {message: "SUCCESFULLY DELETED"}
+    return bye
   })
 }
 
@@ -140,5 +181,8 @@ module.exports = {
   userExists,
   emailPasswordMatch,
   matchRefugeById,
-  addToFavorites
+  addToFavorites,
+  favoritesByUserId,
+  getFavoriteAnimalsByAnimalId,
+  deleteFavorites
 }

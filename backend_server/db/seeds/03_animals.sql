@@ -59,3 +59,18 @@ INSERT INTO animals(refuge_id, specie, name, age, sex, breed, description, image
 INSERT INTO animals(refuge_id, specie, name, age, sex, breed, description, image) VALUES 
 (1, 'cat', 'Jade', '6 years old', 'Female', 'Short-haired', 'Good girl looking for her furever home', '/images/jade-green-eyes-adult.jpg');
 
+INSERT INTO animals(refuge_id, specie, name, age, sex, breed, description, image) VALUES 
+(1, 'cat', 'Gaia', '4 years old', 'Female', 'Short-haired', 'Good girl looking for her furever home', '/images/gaia-black-and-white-short-hair.jpg');
+
+INSERT INTO animals(refuge_id, specie, name, age, sex, breed, description, image) VALUES 
+(1, 'cat', 'Peaches', '7 years old', 'Female', 'Long-haired', 'Good girl looking for her furever home', '/images/peaches-orange-and-white-longhair.jpg');
+
+INSERT INTO animals(refuge_id, specie, name, age, sex, breed, description, image) VALUES 
+(3, 'dog', 'Nacho', '4  years old', 'Male', 'Chihuahua', 'Good boy looking for his furever home', '/images/nacho-chihuahua-adult.jpg');
+
+INSERT INTO animals(refuge_id, specie, name, age, sex, breed, description, image) VALUES 
+(3, 'dog', 'Otis', '8  months old', 'Male', 'Pitbull', 'Good boy looking for his furever home', '/images/otis-pibull-puppy.jpeg');
+
+INSERT INTO animals(refuge_id, specie, name, age, sex, breed, description, image) VALUES 
+(3, 'dog', 'Maddie', '4 months old', 'Female', 'Rottweiler', 'Good girl looking for his furever home', '/images/maddie-rottweiler-puppy.jpg');
+

@@ -38,15 +38,16 @@ const Login = (props) => {
   const notLoggedInDisplay = (
     <div className='Login'>
     <h2>Login</h2>
-    <form onSubmit={(event) => event.preventDefault()}> 
+    <form className='Form' onSubmit={(event) => event.preventDefault()}> 
       <input type="email" placeholder='email' required
         onChange={(e) => {setUserLogin({...userLogin, email:e.target.value})}} />
       <br></br>
       <input type="password" placeholder='password' required
         onChange={(e) => {setUserLogin({...userLogin, password:e.target.value})}}/>
         <br></br>
-      <button onClick={()=>loginUser(userLogin)}>Login</button>
     </form>
+    <button className='btn btn-info' onClick={()=>loginUser(userLogin)}>Login</button>
+    <br></br>
     <div>
     <h4>Not a user yet? <Link to="/register">Register!</Link></h4>
     </div>

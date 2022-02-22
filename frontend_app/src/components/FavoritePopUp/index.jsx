@@ -19,6 +19,7 @@ const FavoritePopUp = ({selectedFavoritePop, setSelectedFavoritePop, setRequestM
   const {
     name,
     image,
+    sex,
     description
   } = selectedFavoritePop
 
@@ -35,33 +36,46 @@ const FavoritePopUp = ({selectedFavoritePop, setSelectedFavoritePop, setRequestM
     setSelectedFavoritePop(false)
   }
 
+  const pronouns = (() => {
+    
+    let pronoun = ""
+
+    if(sex === 'Female') {
+      pronoun = "her "
+    } else  {
+      pronoun = " his "
+    }
+    return pronoun
+  })
+
   return (
     <div className="AnimalPopUp">
       <div className="AnimalPopUpInner">
-        <div className="PopUpHeader">
-          <h3>A little more about me!</h3>
+      <div className="Buttons">
           <button
-            className="close-btn"
+            type="button" className="btn btn-close"
             onClick={() => setSelectedFavoritePop(false)}
-          >  <i class="fa-solid fa-xmark"></i>
+          > <i class="fa-solid fa-angles-left"></i>
           </button>
-        </div>
-        <div className='RefugeInfo'>
-         <h6>{name} currently await their furever home at:</h6> 
-          {/* <div>{refugeData.name}</div> */}
-          {/* <div>{address}</div>
-          <div>{postal_code}</div>  */}
+          <button type="button" className="btn btn-info" onClick = {() => handleOnClickRequest()}>Contact the shelter about {name}</button>
+      </div>
+        <div className="RefugeInfo">
+          <h5><strong>{name}</strong> currently await {pronouns()}furever home at:</h5>
+          <div>Rosie Animal Adoption</div> 
+          <div>3551 Saint-Charles Blvd Suite 440</div>
+          <div>Kirkland</div>
+          <div>H9H 3C4</div> 
         </div>
         <div className="AnimalPopImage">
           <img height="200px" width="200px" src={image} />
         </div>
         <div className="AnimalDesc">
-          <h4>Hello my name is {name}</h4>
+        <h4>A little more about me!</h4>
+          <div>Hello my name is {name}</div>
           <div>{description}</div>
         </div>
-        <div className="Buttons">
-        <button onClick = {() => handleOnClickRequest()}>Contact the shelter about {name}</button>
-          <button onClick={() => deleteFavorites(currentUser.id, selectedFavoritePop.id)}><i class="fa-solid fa-circle-xmark"></i></button>
+        <div className="deleteButton">
+          <button type="button" className="btn btn-info" onClick={() => deleteFavorites(currentUser.id, selectedFavoritePop.id)}>Remove from favorites</button>
         </div>
       </div>
     </div>

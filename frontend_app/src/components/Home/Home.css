@@ -5,16 +5,19 @@
 }
 
 .Slogan {
-  text-align: center;
-  padding-top: 1.5rem;
+  height: 85px;
+  display: flex;
+  align-items: stretch;
   padding-bottom: 2rem;
+  padding-left: 6%;
+  color: #023047;
 }
-
-.container {
-  width: 80%;
+.AnimalsTilesContainer{
+  padding-top: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 body {
-  background-color: lightsteelblue;
   font-family: 'Akaya Telivigala', cursive;
 }

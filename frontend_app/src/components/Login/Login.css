@@ -2,4 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;}
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.Form {
+  padding-bottom: 10px;
+}

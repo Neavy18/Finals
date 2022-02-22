@@ -1,4 +1,4 @@
-/*Shade home background css goes here as well as the css for the selectec tile ---> check out google but basically one big div for whole page with opacity at like 50 ish percent and then smaller div for actual info */
+/* Shade home background css goes here as well as the css for the selectec tile ---> check out google but basically one big div for whole page with opacity at like 50 ish percent and then smaller div for actual info */
 
 .AnimalPopUp {
   position: fixed;
@@ -6,12 +6,11 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 
 .AnimalPopUpInner {
   position: relative;
@@ -20,47 +19,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 55%;
-  margin-top: 5rem;
-  height: 450px;
-  background-color: lightgray;
-  border-radius: 15%;
+  width: 30%;
+  height: 680px;
+  background-color: white;
+  border-radius: 5%;
 }
-
-.PopUpHeader {
-  width: 95%;
-  /* display: flex;
-  justify-content: space-between; */
-  padding-top: 0.75rem;
-  text-align: center;
-}
-
-.btn-close {
-  position: absolute;
-  top: 30px;
-  right: 50px;
-}
-
-.AnimalPopImage {
-  
-  width:80%;
-  height:200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .RefugeInfo {
-  padding-left: 1rem;
+  padding-left: 2rem;
   padding-top: 0.5rem;
-  padding-bottom: 0.75rem;
+  padding-bottom: 1rem;
   width:100%;
   display: flex;
   flex-direction: column;
 }
 
 .AnimalDesc {
-  padding-top: 0.75rem;
+  padding-top: 1.5rem;
   padding-bottom: 0.75rem;
   text-align: center;
 }
@@ -68,6 +42,40 @@
 .Buttons {
   width: 100%;
   display: flex;
-  justify-content: space-around;
-  padding-bottom: 0.65rem;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 2.50rem;
+  /* background-color: black; */
+}
+
+.likeButton {
+  padding-top: 2rem;
+}
+
+.fa-heart {
+  color: #8ecae6
+}
+
+.fa-angles-left {
+  font-size: 25px;
+  color: #ffb703;
+}
+
+.fa-angles-left:hover {
+  color: #219ebc;
+  font-size: 35px;
+}
+
+.fa-heart:hover  {
+  color: #fb8500;
+  font-size: 25px;
+}
+img {
+  border-radius: 8px;
+  border-top: 3px solid black ;
+  border-right: 3px solid black ;
+  border-left:  3px solid black;
+  border-bottom: 3px solid rgb(12, 12, 12);
+  
 }

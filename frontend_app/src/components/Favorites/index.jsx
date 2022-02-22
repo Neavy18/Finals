@@ -36,15 +36,17 @@ const Favorites = ({ name }) => {
 
   return (
     <div>
-      <h1 className='Slogan'>My favorites</h1>
-     <div className='AnimalTiles'>
-        {favoritesData.map(favorite => (
-          <FavoriteAnimal 
-            favorite={favorite} 
-            setSelectedFavoritePop={setSelectedFavoritePop}
-          />
-        ))}
+      <div className='AnimalsTilesContainer'>
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-md-3">
+          {favoritesData.map(favorite => (
+            <FavoriteAnimal 
+              favorite={favorite} 
+              setSelectedFavoritePop={setSelectedFavoritePop}
+            />
+          ))}
+        </div>
       </div>
+  
       {selectedFavoritePop && (
         <FavoritePopUp 
           selectedFavoritePop={selectedFavoritePop} setSelectedFavoritePop={setSelectedFavoritePop} 

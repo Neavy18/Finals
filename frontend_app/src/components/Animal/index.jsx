@@ -13,17 +13,24 @@ const Animal = ({ animal, setSelectedAnimalPop }) => {
     <div className="col" onClick={() => setSelectedAnimalPop(animal)}>
       <div className="card">
         <img src={image} class="card-img-top" alt="Animal" />
-        <div className="card-body">
+        {/* <div className="card-body"> */}
           <div className="AnimalInfo">
             <div className="AnimalNameAge">
-              <div>{name}</div>
-              <div>{age}</div>
+              <div className='PetName'><strong>{name}</strong></div>
+              <li>
+              {breed}
+              </li>
+              <li>
+              {sex}
+              </li>
+              {/* <div>{breed}</div>
+              <div>{sex}</div>
+              <div></div> */}
             </div>
             <div className="AnimalBreedSex">
-              <div>{breed}</div>
-              <div>{sex}</div>
+            {age}
             </div>
-          </div>
+          {/* </div> */}
         </div>
       </div>
       {/* <div className="AnimalImage">

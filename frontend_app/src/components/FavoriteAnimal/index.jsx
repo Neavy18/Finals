@@ -11,12 +11,25 @@ const FavoriteAnimal = ({ favorite, setSelectedFavoritePop }) => {
 
   return (
     <div className="col" onClick={() => setSelectedFavoritePop(favorite) }>
-      <div className="card text-center">
-        <img src={image} class="card-img-top" alt="Animal" />
-        <div className="card-body">
-          <p className="card-text">{name}</p>
-          <p className="card-text">{age}</p>
-        </div>
+      <div className="card">
+      <img src={image} class="card-img-top" alt="Animal" />
+      <div className="AnimalInfo">
+            <div className="AnimalNameAge">
+              <div className='PetName'><strong>{name}</strong></div>
+              <li>
+              {breed}
+              </li>
+              <li>
+              {sex}
+              </li>
+              {/* <div>{breed}</div>
+              <div>{sex}</div>
+              <div></div> */}
+            </div>
+            <div className="AnimalBreedSex">
+            {age}
+            </div>
+          </div>
       </div>
       {/* <div className="AnimalImage">
         <img height="200px" width="200px" src={image} />

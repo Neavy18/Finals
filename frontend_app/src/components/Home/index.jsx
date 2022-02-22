@@ -7,7 +7,9 @@ import LikeMsg from '../LikeMsg';
 import RequestInfoMsg from '../RequestInfoMsg' 
 
 const Home = ({ name }) => {
-  const { getAnimalInfo } = useInfoData();
+  const { 
+    getAnimalInfo 
+  } = useInfoData();
 
   let currentUser = localStorage.getItem('currentUser');
   currentUser = JSON.parse(currentUser);
@@ -33,20 +35,20 @@ const Home = ({ name }) => {
     return null;
   }
 
-  const userLoggedDisplay = ( <div>
-    <section className='Slogan'>
-        <h1>Find your Soulmate</h1>
-      </section>
-      <div className="container">
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3">
-      {animalsData.map(animal => (
+  const userLoggedDisplay = ( 
+
+  <div>
+    <div className='AnimalsTilesContainer'>
+      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-md-3">
+        {animalsData.map(animal => (
         <Animal 
           animal={animal} 
           setSelectedAnimalPop={setSelectedAnimalPop} 
         />
-      ))}
-        </div>
+        ))} 
       </div>
+    </div>
+  
     {selectedAnimalPop && (
       <AnimalPopUp 
         selectedAnimalPop={selectedAnimalPop} 
@@ -69,21 +71,15 @@ const Home = ({ name }) => {
         setShowRequestMessage={setShowRequestMessage}
       />
     )}
-    </div>)
+  </div>)
 
     const noUserLoggedDisplay = (
       <>
-      <section className="Slogan">
-        <h1>Find your Soulmate</h1>
-      </section>
-      <div className="container">
-        {/* <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4"> */}
+      <div className="AnimalsTilesContainer">
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3">
-          {/* <h1 className="Slogan">LOGIN</h1> */}
           {animalsData.map((animal) => (
             <Animal animal={animal} setSelectedAnimalPop={setSelectedAnimalPop} />
           ))}
-          {/* </div> */}
         </div>
       </div>
         {selectedAnimalPop && (
@@ -96,7 +92,7 @@ const Home = ({ name }) => {
   
     return (
       <div >
-      {currentUser ? userLoggedDisplay : noUserLoggedDisplay}
+        {currentUser ? userLoggedDisplay : noUserLoggedDisplay}
       </div>
     );
 }

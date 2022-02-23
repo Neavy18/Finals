@@ -40,11 +40,20 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, setShowLikeMessag
   }
   const handleOnClickRequest = () => {
     setRequestMessage(selectedAnimalPop.name) /* setLikeMessage({name: selectedAnimalPop.name  shelterName: se...}) */
-    setShowRequestMessage(true)
-    setSelectedAnimalPop(false)
+    setTimeout(() => {
+      setShowRequestMessage(true)
+      setSelectedAnimalPop(false)
+    }, 900)
   }
   const popIconHeart = ( <button type="button" className="btn btn-info" onClick={()=> handleOnClickLike()}><i class="fa-solid fa-heart"></i></button>)
-  const notLogged = (<div><Link to='/login'> Login </Link> or <Link to='/register'>Register </Link><span>to like or request more info about {name}</span> </div>)
+  const notLogged = (
+  <div className='NotLogged'>
+    <div>    
+      <Link to='/login'> Login </Link> /  <Link to='/register'>Register </Link>
+    </div>
+      <div>to like or request more info about </div>
+      <div>{name}</div>
+  </div>)
   const requestMoreInfo = (<button type="button" className="btn btn-info" onClick = {() => handleOnClickRequest()}>Contact the shelter about {name}</button>)
   const empty = (<div></div>)
 
@@ -77,15 +86,16 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, setShowLikeMessag
           <div>Rosie Animal Adoption</div> 
           <div>3551 Saint-Charles Blvd Suite 440</div>
           <div>Kirkland</div>
-          <div>H9H 3C4</div> 
+          <div>H9H 3C4 </div> 
         </div>
         <div className="AnimalPopImage">
           <img height="250px" width="275px" src={image} />
         </div>
         <div className="AnimalDesc">
-        <h4>A little more about me!</h4>
-          <div>Hello, my name is {name} </div> 
-          <div>{description}</div>
+        <h4 className='desc'>Hello, my name is <strong>{name}</strong>! </h4> 
+          <div>{description}This young lady will need a family that can match her high level of energy and will be willing to pay a lot of attention to the many requests she will very vocally emit. Her ideal home would have a yard and, possibly, some other canine companions. Any prior experience with huskies would be a plus!</div>
+          <div>
+          </div>
         </div>
         <div className="likeButton">
           {currentUser ? popIconHeart : notLogged}

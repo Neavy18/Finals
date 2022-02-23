@@ -11,10 +11,11 @@ const LikeMsg = ({likeMessage, setShowLikeMessage}) => {
   return (
     <div className="MessagePopUp">
       <div className="MessagePopUpInner">
+        <h2><strong>{likeMessage}</strong> was added to your favorites!</h2>
+        <br></br>
         <button className="close-btn" onClick={() => setShowLikeMessage(false)}> 
-          <i class="fa-solid fa-xmark"></i> 
+        <i class="fa-solid fa-circle-check"></i>
         </button>
-        <h3>{likeMessage} was added to your favorites!</h3>
       </div>
     </div>
   )

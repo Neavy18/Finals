@@ -37,8 +37,8 @@ const Register = (props) => {
 
   const registerDisplay = (
     <div className='Register'>
-    <form onSubmit={(event) => event.preventDefault()}> 
       <h2>Register</h2>
+    <form onSubmit={(event) => event.preventDefault()}> 
       <input type="text" placeholder='First name' required
       onChange={(e) => {setUser({...user, firstName: e.target.value})}} />
       <br></br>
@@ -51,8 +51,10 @@ const Register = (props) => {
       <input type="password" placeholder='password' required
       onChange={(e) => {setUser({...user, password: e.target.value})}} />
       <br></br>
-      <button type="submit" onClick={() => registerUser(user)}>Register</button>
+      <button className='btn btn-info register'type="submit" onClick={() => registerUser(user)}>Register</button>
     </form> 
+    <br></br>
+    <br></br>
     <h4>Already a user yet? <Link to="/login">Login!</Link></h4>
   </div>
   )

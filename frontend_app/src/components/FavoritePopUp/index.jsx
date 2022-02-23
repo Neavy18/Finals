@@ -32,8 +32,11 @@ const FavoritePopUp = ({selectedFavoritePop, setSelectedFavoritePop, setRequestM
   
   const handleOnClickRequest = () => {
     setRequestMessage(selectedFavoritePop.name) /* setLikeMessage({name: selectedAnimalPop.name  shelterName: se...}) */
-    setShowRequestMessage(true)
-    setSelectedFavoritePop(false)
+    setTimeout(() => {
+      setShowRequestMessage(true) 
+      setSelectedFavoritePop(false)
+    }, 800)
+    
   }
 
   const pronouns = (() => {
@@ -67,12 +70,12 @@ const FavoritePopUp = ({selectedFavoritePop, setSelectedFavoritePop, setRequestM
           <div>H9H 3C4</div> 
         </div>
         <div className="AnimalPopImage">
-          <img height="200px" width="200px" src={image} />
+        <img height="250px" width="275px" src={image} />
         </div>
         <div className="AnimalDesc">
-        <h4>A little more about me!</h4>
-          <div>Hello my name is {name}</div>
+        <h4>Hello my name is <strong>{name}</strong></h4>
           <div>{description}</div>
+          <div>This young lady will need a family that can match her high level of energy and will be willing to pay a lot of attention to the many requests she will very vocally emit. Her ideal home would have a yard and, possibly, some other canine companions. Any prior experience with huskies would be a plus!</div>
         </div>
         <div className="deleteButton">
           <button type="button" className="btn btn-info" onClick={() => deleteFavorites(currentUser.id, selectedFavoritePop.id)}>Remove from favorites</button>

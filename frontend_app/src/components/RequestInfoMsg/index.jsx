@@ -4,17 +4,14 @@ import { useEffect } from "react";
 
 const RequestMessage = ({requestMessage, setShowRequestMessage}) => {
 
-  const reloadHome = () => {
-    window.location.reload();
-  }
-
   return (
-    <div className="MessagePopUp">
-      <div className="MessagePopUpInner">
-        <button className="close-btn" onClick={() => setShowRequestMessage(false)}> 
-          <i class="fa-solid fa-xmark"></i> 
+    <div className="RequestPopUp">
+      <div className="RequestPopUpInner">
+        <h3>Thank you for your interest in <strong>{requestMessage}</strong>,</h3>
+        <h5>the naaaame should email you shortly!</h5>
+        <button className="close-btn-request" onClick={() => setShowRequestMessage(false)}> 
+        <i class="fa-solid fa-circle-check"></i>
         </button>
-        <h3>Thank you for your interest in {requestMessage}, the naaaame should email you shortly!</h3>
       </div>
     </div>
   )

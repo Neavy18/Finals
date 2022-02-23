@@ -1,5 +1,8 @@
 /*Shade home background css goes here as well as the css for the selectec tile ---> check out google but basically one big div for whole page with opacity at like 50 ish percent and then smaller div for actual info */
 
+body {
+  width: 100%
+}
 .MessagePopUp {
   position: fixed;
   top: 0;
@@ -14,19 +17,20 @@
 
 .MessagePopUpInner {
   position: relative;
-  border: 3px solid;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 40%;
-  margin-top: 5rem;
-  height: 200px;
+  width: 35%;
+  height: 25%;
   background-color: white;
+  border-radius: 50%;
+  padding-top: 2%;
 }
 
 .close-btn {
-  position: absolute;
-  top: 16px;
-  right: 16px;
+  font-size: 150%;
+  border: none;
+  background-color: white;
+  color: #fb8500;
 }

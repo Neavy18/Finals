@@ -7,7 +7,8 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Favorites from './components/Favorites';
 import Header from './components/Header';
-import useInfoData from './Api';
+import Error from './components/Error';
+// import useInfoData from './Api';
 
 //All of the routes are populated with their components here
 
@@ -17,10 +18,11 @@ function App() {
     <Router>
       <Layout></Layout>
       <Routes>
-        { <Route path ="/" element={<Home />} />}
-        { <Route path = "/login" element={<Login/>}/> }
-        { <Route path = "/register" element={<Register />}/> }
-        { <Route path = "/favorites" element={<Favorites />} /> }
+        { <Route path ='/' element={<Home/>}/>}
+        { <Route path = '/login' element={<Login/>}/>}
+        { <Route path = '/register' element={<Register/>}/>}
+        { <Route path = '/favorites' element={<Favorites/>}/>}
+        {<Route path = '/*' element={<Error/>}/>}
       </Routes>
     </Router>
   

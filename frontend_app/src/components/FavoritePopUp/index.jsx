@@ -64,10 +64,10 @@ const FavoritePopUp = ({selectedFavoritePop, setSelectedFavoritePop, setRequestM
       </div>
         <div className="RefugeInfo">
           <h5><strong>{name}</strong> currently await {pronouns()}furever home at:</h5>
-          <div>Rosie Animal Adoption</div> 
-          <div>3551 Saint-Charles Blvd Suite 440</div>
-          <div>Kirkland</div>
-          <div>H9H 3C4</div> 
+          <div></div> 
+          <div></div>
+          <div></div>
+          <div></div> 
         </div>
         <div className="AnimalPopImage">
         <img height="250px" width="275px" src={image} />

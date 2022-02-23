@@ -43,7 +43,9 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, setShowLikeMessag
     setSelectedAnimalPop(false)
   }
   const handleOnClickRequest = () => {
-    setRequestMessage(selectedAnimalPop.name) /* setLikeMessage({name: selectedAnimalPop.name  shelterName: se...}) */
+    setRequestMessage({
+      name: selectedAnimalPop.name,
+      refuge_name: selectedAnimalPop.refuge_name}) /* setLikeMessage({name: selectedAnimalPop.name  shelterName: se...}) */
     setTimeout(() => {
       setShowRequestMessage(true)
       setSelectedAnimalPop(false)

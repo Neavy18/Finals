@@ -52,10 +52,11 @@ const getRefuges = () => {
 
 //get Animals query
 const getAnimals = () => {
-  const stringQuery = 'SELECT * FROM animals'
+  const stringQuery = 'SELECT * FROM animals INNER JOIN refuges ON animals.refuge_id = refuges.refuge_key;'
   return db
   .query(stringQuery)
   .then((data) => {
+    console.log("this is data rows", data.rows)
     return data.rows
   })
   .catch((err) => err.message);

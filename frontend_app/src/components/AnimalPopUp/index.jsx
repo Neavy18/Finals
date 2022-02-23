@@ -20,7 +20,11 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, setShowLikeMessag
     name,
     image,
     sex,
-    description
+    description,
+    refuge_name,
+    address,
+    city,
+    postal_code
   } = selectedAnimalPop
 
   let currentUser = localStorage.getItem('currentUser')
@@ -83,10 +87,10 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, setShowLikeMessag
           </div>
         <div className="RefugeInfo">
           <h5><strong>{name}</strong> currently await {pronouns()}furever home at:</h5>
-          <div>Rosie Animal Adoption</div> 
-          <div>3551 Saint-Charles Blvd Suite 440</div>
-          <div>Kirkland</div>
-          <div>H9H 3C4 </div> 
+          <div>{refuge_name}</div> 
+          <div>{address}</div>
+          <div>{city}</div>
+          <div>{postal_code}</div> 
         </div>
         <div className="AnimalPopImage">
           <img height="250px" width="275px" src={image} />

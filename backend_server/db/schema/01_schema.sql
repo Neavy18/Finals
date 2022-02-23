@@ -28,7 +28,11 @@ CREATE TABLE animals (
   sex VARCHAR(255) NOT NULL,
   breed VARCHAR(255) NOT NULL,
   description TEXT,
-  image VARCHAR(500)
+  image VARCHAR(500),
+  refuge_name VARCHAR(255) NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  city VARCHAR(255) NOT NULL,
+  postal_code VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE favorites (

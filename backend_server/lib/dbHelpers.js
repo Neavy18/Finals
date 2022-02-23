@@ -52,7 +52,7 @@ const getRefuges = () => {
 
 //get Animals query
 const getAnimals = () => {
-  const stringQuery = 'SELECT * FROM animals INNER JOIN refuges ON animals.refuge_id = refuges.refuge_key;'
+  const stringQuery = 'SELECT * FROM animals;'
   return db
   .query(stringQuery)
   .then((data) => {

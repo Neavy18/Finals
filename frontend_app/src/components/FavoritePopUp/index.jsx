@@ -20,8 +20,14 @@ const FavoritePopUp = ({selectedFavoritePop, setSelectedFavoritePop, setRequestM
     name,
     image,
     sex,
-    description
+    description,
+    refuge_name,
+    address,
+    city,
+    postal_code
   } = selectedFavoritePop
+
+  console.log("this should be favoritepops ---->", selectedFavoritePop)
 
   let currentUser = localStorage.getItem('currentUser')
   currentUser = JSON.parse(currentUser)
@@ -31,7 +37,9 @@ const FavoritePopUp = ({selectedFavoritePop, setSelectedFavoritePop, setRequestM
  
   
   const handleOnClickRequest = () => {
-    setRequestMessage(selectedFavoritePop.name) /* setLikeMessage({name: selectedAnimalPop.name  shelterName: se...}) */
+    setRequestMessage({
+      name: selectedFavoritePop.name,
+      refuge_name: selectedFavoritePop.refuge_name}) /* setLikeMessage({name: selectedAnimalPop.name  shelterName: se...}) */
     setTimeout(() => {
       setShowRequestMessage(true) 
       setSelectedFavoritePop(false)
@@ -63,11 +71,11 @@ const FavoritePopUp = ({selectedFavoritePop, setSelectedFavoritePop, setRequestM
           <button type="button" className="btn btn-info" onClick = {() => handleOnClickRequest()}>Contact the shelter about {name}</button>
       </div>
         <div className="RefugeInfo">
-          <h5><strong>{name}</strong> currently await {pronouns()}furever home at:</h5>
-          <div></div> 
-          <div></div>
-          <div></div>
-          <div></div> 
+        <h5><strong>{name}</strong> currently await {pronouns()}furever home at:</h5>
+          <div>{refuge_name}</div> 
+          <div>{address}</div>
+          <div>{city}</div>
+          <div>{postal_code}</div> 
         </div>
         <div className="AnimalPopImage">
         <img height="250px" width="275px" src={image} />

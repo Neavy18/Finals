@@ -99,9 +99,8 @@ const AnimalPopUp = ({selectedAnimalPop, setSelectedAnimalPop, setShowLikeMessag
         </div>
         <div className="AnimalDesc">
         <h4 className='desc'>Hello, my name is <strong>{name}</strong>! </h4> 
-          <div>{description}This young lady will need a family that can match her high level of energy and will be willing to pay a lot of attention to the many requests she will very vocally emit. Her ideal home would have a yard and, possibly, some other canine companions. Any prior experience with huskies would be a plus!</div>
-          <div>
-          </div>
+        <br></br>
+          <div>{description}</div>
         </div>
         <div className="likeButton">
           {currentUser ? popIconHeart : notLogged}

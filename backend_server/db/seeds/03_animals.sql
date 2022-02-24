@@ -48,7 +48,7 @@ INSERT INTO animals(refuge_id, specie, name, age, sex, breed, description, image
 (1, 'cat', 'Abby', '11 years old', 'Female', 'Long-Haired', 'Distinguised older lady who loves to cuddle under tons of blankets looking for her furever home', '/images/abby-gray-white-maine-coon-adult.jpg', 'Proanima', '1470 Rue de Coulomb', 'Boucherville', 'J4B 7K2');
 
 INSERT INTO animals(refuge_id, specie, name, age, sex, breed, description, image, refuge_name, address, city, postal_code) VALUES 
-(3, 'dog', 'Nacho', '4  years old', 'Male', 'Chihuahua', 'Nacho was quite shy at first but, we quickly find out that being around other dogs really helps him come out of his shell and become his full adorable self. Therefore, we are looking for a home able to provide him with at least one canine companion.', '/images/nacho-chihuahua-adult.jpg', 'SPCA de Montreal', '5215 Rue Jean-Talon O', 'Montreal', 'H4P 1X4');
+(3, 'dog', 'Nacho', '4  years old', 'Male', 'Chihuahua', 'Nacho was quite shy at first but, we quickly found out that being around other dogs really helps him come out of his shell and become his full adorable self. Therefore, we are looking for a home able to provide him with at least one canine companion.', '/images/nacho-chihuahua-adult.jpg', 'SPCA de Montreal', '5215 Rue Jean-Talon O', 'Montreal', 'H4P 1X4');
 
 INSERT INTO animals(refuge_id, specie, name, age, sex, breed, description, image, refuge_name, address, city, postal_code) VALUES 
 (1, 'cat', 'Peaches', '7 years old', 'Female', 'Long-haired', 'Good girl looking for her furever home', '/images/peaches-orange-and-white-longhair.jpg', 'SPCA de Montreal', '5215 Rue Jean-Talon O', 'Montreal', 'H4P 1X4');
